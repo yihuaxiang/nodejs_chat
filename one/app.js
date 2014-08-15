@@ -156,9 +156,14 @@ io.on("connection",function(socket){
 	})
 
 	socket.on("disconnect",function(){
-		delete sockets[socket.username];
 		delete usernames[socket.username];
 		numUsers--;
+		socket.broadcast.emit("leave",{
+			usernames:usernames,
+			username:socket.username
+		})
+		delete sockets[socket.username];
+
 	})
 })
 

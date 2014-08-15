@@ -604,6 +604,16 @@ socket.on("stop typing",function(data){
 	})
 })
 
+socket.on("leave",function(data){
+	updateOnline(data.usernames);
+	clearTimeout(time_out);
+	$("#title").text(data.username+" is gone!");
+	clearTimeout(time_out);
+	time_out=setTimeout(function(){
+		$("#title").text("chat for us")
+	},2000);
+})
+
 //emit
 $("#input_emit_box").on("keydown",function(e){
 	if(e.keyCode==13){
