@@ -1,0 +1,554 @@
+<html>
+<head>
+<link rel="stylesheet" href="style.css" />
+<style>
+htmk,body{
+	width:100%;
+	height:100%;
+	padding:0px;
+	margin:0px;
+}
+body{
+	min-height:600px;
+	width:1000px;
+	position:relative;
+	margin:0px auto;
+}
+html body{
+	margin-left:auto;
+	margin-right:auto;
+}
+.typing{
+	color:red;
+	-webkit-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+	-o-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-name: shake;
+	-moz-animation-name: shake;
+	-o-animation-name: shake;
+	animation-name: shake
+
+	 -webkit-animation-iteration-count: infinite;/*定义循环资料，infinite为无限次*/
+	 -moz-animation-iteration-count: infinite;/*定义循环资料，infinite为无限次*/
+	 -o-animation-iteration-count: infinite;/*定义循环资料，infinite为无限次*/
+	 animation-iteration-count: infinite;/*定义循环资料，infinite为无限次*/
+}
+.width100{
+	width:100%;
+}
+.float-left{
+	float:left;
+}
+.float-right{
+	float:right;
+}
+.clear_after:after{
+	content:"";
+	clear:both;
+	display:block;
+}
+#main{
+	height:81%;
+}
+#main,#input{
+	width:100%;
+}
+#chat_show,#chat_online{
+	height:100%;
+	border:1px grey solid;
+	border-radius:10px;
+	padding-bottom:200px;
+	over-flow:scroll;
+}
+#chat_show{
+	padding:10px;
+	overflow-y:scroll;
+}
+#input{
+	position:absolute;
+	bottom:0px;
+}
+.float-left p,.float-right p{
+	font-size:25px;
+}
+
+
+
+@-webkit-keyframes shake {
+	0%, 100% {-webkit-transform: translatex(0);}
+	10%, 30%, 50%, 70%, 90% {-webkit-transform: translatex(-5px);}
+	20%, 40%, 60%, 80% {-webkit-transform: translatex(5px);}
+}
+
+@-moz-keyframes shake {
+	0%, 100% {-moz-transform: translatex(0);}
+	10%, 30%, 50%, 70%, 90% {-moz-transform: translatex(-5px);}
+	20%, 40%, 60%, 80% {-moz-transform: translatex(5px);}
+}
+
+@-o-keyframes shake {
+	0%, 100% {-o-transform: translatex(0);}
+	10%, 30%, 50%, 70%, 90% {-o-transform: translatex(-5px);}
+	20%, 40%, 60%, 80% {-o-transform: translatex(5px);}
+}
+
+@keyframes shake {
+	0%, 100% {transform: translatex(0);}
+	10%, 30%, 50%, 70%, 90% {transform: translatex(-5px);}
+	20%, 40%, 60%, 80% {transform: translatex(5px);}
+}
+
+
+
+@font-face {
+	font-family: 'icomoon';
+	src:url("./fonts/icomoon.ttf") ;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bubble:before {
+	content: "\e600";
+}
+.icon-star:before {
+	content: "\e601";
+}
+.icon-heart:before {
+	content: "\e602";
+}
+.icon-heart2:before {
+	content: "\e603";
+}
+.icon-heart-broken:before {
+	content: "\e604";
+}
+.icon-thumbs-up:before {
+	content: "\e605";
+}
+.icon-thumbs-up2:before {
+	content: "\e606";
+}
+.icon-happy:before {
+	content: "\e607";
+}
+.icon-happy2:before {
+	content: "\e608";
+}
+.icon-smiley:before {
+	content: "\e609";
+}
+.icon-smiley2:before {
+	content: "\e60a";
+}
+.icon-tongue:before {
+	content: "\e60b";
+}
+.icon-tongue2:before {
+	content: "\e60c";
+}
+.icon-sad:before {
+	content: "\e60d";
+}
+.icon-sad2:before {
+	content: "\e60e";
+}
+.icon-wink:before {
+	content: "\e60f";
+}
+.icon-wink2:before {
+	content: "\e610";
+}
+.icon-grin:before {
+	content: "\e611";
+}
+.icon-grin2:before {
+	content: "\e612";
+}
+.icon-cool:before {
+	content: "\e613";
+}
+.icon-cool2:before {
+	content: "\e614";
+}
+.icon-angry:before {
+	content: "\e615";
+}
+.icon-angry2:before {
+	content: "\e616";
+}
+.icon-evil:before {
+	content: "\e617";
+}
+.icon-evil2:before {
+	content: "\e618";
+}
+.icon-shocked:before {
+	content: "\e619";
+}
+.icon-shocked2:before {
+	content: "\e61a";
+}
+.icon-confused:before {
+	content: "\e61b";
+}
+.icon-confused2:before {
+	content: "\e61c";
+}
+.icon-neutral:before {
+	content: "\e61d";
+}
+.icon-neutral2:before {
+	content: "\e61e";
+}
+.icon-wondering:before {
+	content: "\e61f";
+}
+.icon-wondering2:before {
+	content: "\e620";
+}
+</style>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="./socket.io/socket.io.js"></script>
+
+</head>
+<body>
+<div id="main" class="container" >
+	<div class="row">
+		<h2 id="title" class="text-center">chat for us</h2>
+	</div>
+	<div class="row">
+		<div  id="chat_show" class="col-xs-10">
+			
+		</div>
+		<div id="chat_online" class="col-xs-2" style="overflow-y:scroll">
+			<dl id="users_dl">
+				<dt>online users</dt>
+				<dd>loading...</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div id="input" class="container" >
+	<div class="row">
+		<div id="username" class="col-xs-3">
+			<div class="form-group">
+				<label class="col-md-6 control-label" style="padding-top:7px;">Username</label>
+				<div class="col-md-6">
+					<p id="your_name" class="form-control-static">fudongdong</p>
+				</div>
+			</div>
+		</div>
+		<div id="input_box" class="col-xs-5">
+			<div class="form-inline width100">
+				<div class="form-group width100">
+					<div class="input-group width100">
+						<div class="input-group-addon">
+							<input id="color" type="color" name="color" />
+						</div>
+						<input id="input_emit_box" class="form-control" type='text' placeholder="input here..." />
+						<div class="input-group-addon" id="enter" style="cursor:pointer;">Enter</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="select" class="col-xs-2">
+			<form class="form">
+					<div  id="select_div" class="controls">
+						<select id="selelct_users" class="form-control" >
+							<option>loading...</option>
+						</select>
+					</div>
+			</form>
+		</div>
+		<div id="face" class="col-xs-2">
+			<form class="form">
+					<div  id="face_div" class="controls">
+						<select id="select_face" class="form-control" >
+							<option>add face</option>
+							<option>happy2</option>
+							<option>bubble</option>
+							<option>star</option>
+							<option>heart</option>
+							<option>heart2</option>
+							<option>heart-broken</option>
+							<option>thumbs-up</option>
+							<option>thumbs-up2</option>
+							<option>happy</option>
+							<option>smiley</option>
+							<option>smiley2</option>
+							<option>tongue</option>
+							<option>tongue2</option>
+							<option>sad</option>
+							<option>sad2</option>
+							<option>wink</option>
+							<option>wink2</option>
+							<option>grin</option>
+							<option>grin2</option>
+							<option>cool</option>
+							<option>angry</option>
+							<option>evil</option>
+							<option>shocked</option>
+							<option>confused</option>
+							<option>neutral</option>
+							<option>wondering2</option>
+						</select>
+					</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script>
+$("#select_face").change(function(){
+	//alert($("#select_face").val());
+	$("#input_emit_box").val($("#input_emit_box").val()+"<--"+$("#select_face option:selected").text()+"-->");
+	$("#select_face").find("option").eq(0).attr("selected",true)
+})
+
+$("#enter").click(function(){
+	sendMessage();
+})
+
+$(window).on("keydown",function(e){
+	if(e.keyCode==116){
+		var flag=false;
+		if(window.confirm("You will  leave ,are you sure ?")){
+			flag=true;
+		}else{
+			flag=false;
+		}
+
+		if(flag){
+
+		}else{
+			e.preventDefault();
+		}
+	}
+})
+
+var time_out;
+var time_out1;
+var myName="";
+var socket=io("http://localhost");
+
+//on
+socket.on("welcome",function(data){
+	var numUsers=data.numUsers;
+	var usernames=data.usernames;
+	var username=data.username;
+	myName=data.username;
+
+	$("#title").text("There are "+numUsers+"user(s)");
+	clearTimeout(time_out);
+	time_out=setTimeout(function(){
+		$("#title").text("chat for us")
+	},2000);
+	$("#your_name").text(username);
+	updateOnline(usernames);
+})
+socket.on("welcome_new",function(data){
+	var numUsers=data.numUsers;
+	var usernames=data.usernames;
+	var username=data.username;
+
+	$("#title").text("welcome "+username+" and There are "+numUsers+"user(s)");
+	clearTimeout(time_out);
+	time_out=setTimeout(function(){
+		$("#title").text("chat for us")
+	},2000);
+	updateOnline(usernames);
+})
+
+
+socket.on("all",function(data){
+	console.log(data);
+	if(data.to=="all"){
+		var $div=$("<div class='clear_after'>");
+		var $one=$("<div class='float-left' style='width:25%'>");
+		$h2=$("<h2 style='margin:0px'>");
+		$h2.text(data.from);
+		//$one.append($("<h2 style='margin:0px;'>"+data.from+"</h2>"));
+		$one.append($h2);
+		$div.append($one);
+		var $two=$("<div class='float-left' style='width:74%'>");
+		$p=$("<p style='word-break:break-all;line-height:40px;''></p>");
+		var faceIndex=data.msg.indexOf("</span>")+7;
+		var faceStart=data.msg.indexOf("<span ");
+		var face=data.msg.substr(faceStart,faceIndex);
+		data.msg=data.msg;
+		$p.text(data.msg);
+		$p.append($(face));
+		$p.css("color",'"'+data.color+'"');
+		$p.css("color",data.color);
+		//$two.append($("<p style='word-break:break-all;line-height:40px;''>"+data.msg+"</p>"));
+		$two.append($p);
+		$div.append($two);
+		$("#chat_show").append($div);
+		$("#chat_show").scrollTop(111111);
+	}else {
+		var $div=$("<div class='clear_after'>");
+		var $one=$("<div class='float-left' style='width:25%'>");
+		if(data.from.length>3){
+			data.from=data.from.substring(4);
+		}
+		if(data.to.length>3){
+			data.to=data.to.substring(4);
+		}
+		$one.append($("<h2 style='margin:0px;'></h2>").text(data.from+">"+data.to));
+		$div.append($one);
+		var $two=$("<div class='float-left' style='width:74%'>");
+		$p=$("<p style='word-break:break-all;line-height:40px;''></p>");
+		//$p.text(data.msg);
+		var faceIndex=data.msg.indexOf("</span>")+7;
+		var faceStart=data.msg.indexOf("<span ");
+		var face=data.msg.substr(faceStart,faceIndex);
+		data.msg=data.msg;
+		$p.text(data.msg);
+		$p.append($(face));
+		$p.css("color",'"'+data.color+'"');
+		$p.css("color",data.color);
+		$two.append($p);
+		//$two.append($("<p style='word-break:break-all;line-height:40px;''></p>").text(data.msg));
+		$div.append($two);
+		$("#chat_show").append($div);
+		$("#chat_show").scrollTop(111111);
+	}
+})
+
+socket.on("all_done",function(data){
+		var $div=$("<div class='clear_after'>");
+		var $one=$("<div class='float-right' style='width:25%'>");
+		$one.append($("<h2 style='margin:0px;text-align:right'>I-></h2>").text("I>"+data.to));
+		$div.append($one);
+		var $two=$("<div class='float-right' style='width:74%'>");
+		$p=$("<p style='word-break:break-all;line-height:40px;float:right;''></p>");
+		//$p.text(data.msg);
+		var faceIndex=data.msg.indexOf("</span>")+7;
+		var faceStart=data.msg.indexOf("<span ");
+		var face=data.msg.substr(faceStart,faceIndex);
+		data.msg=data.msg;
+		$p.text(data.msg);
+		$p.append($(face));
+		$p.css("color",'"'+data.color+'"');
+		$p.css("color",data.color);
+		console.log($p);
+		//alert(data.color);
+		$two.append($p);
+		//$two.append($("<p style='word-break:break-all;text-align:right;line-height:40px;'></p>").text(data.msg));
+		$div.append($two);
+		$("#chat_show").append($div);
+		$("#chat_show").scrollTop(111111);
+})
+
+socket.on("private",function(data){
+	console.log(data);
+})
+
+socket.on("typing",function(data){
+	var name=data.username;
+	console.log(name);
+	console.log("typing");
+	$("#chat_online dd").each(function(){
+		console.log("****");
+		console.log($(this));
+		console.log($(this).text());
+		console.log("*****");
+		if($(this).text()==name){
+			console.log($(this));
+			clearTimeout(time_out1);
+			$(this).addClass("typing");
+			
+			time_out1=setTimeout(function(name){
+				//$(this).removeClass("typing");
+				socket.emit("stop typing",{});
+			},1000)
+			//time_out1=setTimeout('$("'+this+'"").removeClass("typing")',1000);
+		}
+	})
+})
+
+socket.on("stop typing",function(data){
+	var name=data.username;
+	$("#chat_online dd").each(function(){
+		if($(this).text()==name){
+			$(this).removeClass("typing");
+		}
+	})
+})
+
+//emit
+$("#input_emit_box").on("keydown",function(e){
+	if(e.keyCode==13){
+		sendMessage();
+	}else{
+		socket.emit("typing",{})
+	}
+})
+
+//functions
+function updateOnline(usernames){
+	var $users_dl=$("<dl>");
+	var $select_users=$('<select  id="selelct_users" class="form-control" >');
+	$select_users.append("<option>all</optioin>");
+	$users_dl.append($("<dt>online users</dt>"));
+	for(var key in usernames){
+		$users_dl.append($("<dd>"+key+"</dd>"));
+		if(key==myName){
+
+		}else{	
+			$select_users.append($("<option>"+key+"</options>"));
+		}
+	}
+	$("#chat_online").html($users_dl);
+	$("#select_div").html($select_users);
+
+}
+
+function sendMessage(){
+		//if($("#selelct_users").val()=="all"){
+			var string=$("#input_emit_box").val();
+			string=string.trim();
+			if(string!=""){
+				for(var i=0;i<27;i++){
+					//$("image").attr("src").replace("size=60", "size=200");
+					//console.log("<--"+$("#select_face").find("option").eq(i).text()+"-->");
+					//console.log("<span class='"+$("#select_face").find("option").eq(i).text()+"'></span>")
+					string=string.replace("<--"+$("#select_face").find("option").eq(i).text()+"-->","<span class='icon-"+$("#select_face").find("option").eq(i).text()+"'></span>");
+					//$("#select_face").find("option").eq(1).text()
+				}
+				//alert(string);
+				socket.emit("all",{
+					to:$("#selelct_users").val(),
+					msg:string,
+					color:$("#color").val()
+				})
+				$("#input_emit_box").val("");
+				//alert($("#input_emit_box").val());
+		//}	
+			}else{
+				alert("Nothing Input,Sorry!");
+			}
+}
+
+</script>
+</body>
+</html>
