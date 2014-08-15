@@ -73,7 +73,24 @@ html body{
 	font-size:25px;
 }
 
-
+#right{
+	position:fixed;
+	right:40px;
+	width:100px;
+	height:220px;
+	top:50%;
+}
+#right ul{
+	position:relative;
+	top:-50%;
+}
+#right ul li{
+	float:left;
+	margin-top:3px;
+}
+#right ul li a{
+	width:75px;
+}
 
 @-webkit-keyframes shake {
 	0%, 100% {-webkit-transform: translatex(0);}
@@ -316,6 +333,28 @@ html body{
 			</form>
 		</div>
 	</div>
+</div>
+<div id="right">
+	<ul class="clear_after">
+		<li>
+			<a id="history" href="/history?page=1" target="_blank" type="button" class="btn btn-default">history</a>
+		</li>
+		<li>
+			<a type="button" class="btn btn-default">function</a>
+		</li>
+		<li>
+			<a type="button" class="btn btn-default">function</a>
+		</li>
+		<li>
+			<a type="button" class="btn btn-default">function</a>
+		</li>
+		<li>
+			<a type="button" class="btn btn-default">function</a>
+		</li>
+		<li>
+			<a type="button" class="btn btn-default">function</a>
+		</li>
+	</ul>
 </div>
 <script>
 $("#select_face").change(function(){

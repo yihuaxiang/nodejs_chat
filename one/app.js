@@ -30,15 +30,45 @@ var express=require("express");
 var app=express();
 var fs=require("fs");
 var path=require("path");
+
+var connect_mysql=require("./connect_mysql");
+
 var server=require("http").createServer(app);
 var io=require("socket.io")(server);
 var port=8801;
+
+var connection;
+
+connection=connect_mysql.connect(connection);
+/*
+connection.query("insert into history values(null,'user1234',null,'I love you')",function(err,rows,fields){
+	if(err){
+		throw err;
+	}
+})*/
 
 //app.use(sta("./"));
 app.use(express.static(__dirname ));
 
 app.get("/",function(req,res){
 	res.sendfile(__dirname+"/index.html");
+})
+
+app.get("/history",function(req,res){
+	var page=req.query.page;
+	if(!page){
+		page=1;
+	}
+	//console.log(page);
+	var sql="select * from history limit "+((page-1)*10)+",10";
+	console.log(sql);
+	connection.query(sql,function(err,rows,fields){
+		if(err) throw err;
+		res.writeHead(200,{
+			"content-type":"text/json;charset='utf8'"
+		})
+		res.json(rows);
+	})
 })
 
 
@@ -101,6 +131,13 @@ io.on("connection",function(socket){
 	})
 
 	socket.on("all",function(data){
+
+		var sql='insert into history values(null,"'+socket.username.replace('"','&apos;')+'","'+data.to.replace('"','&apos;')+'","'+data.msg.replace('"','&apos;')+'","'+(new Date())+'")';
+		connection.query(sql,function(err,rows,fields){
+			if(err) throw err;
+
+		})
+
 		socket.broadcast.emit("all",{
 			from:socket.username,
 			to:data.to,
