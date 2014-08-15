@@ -391,28 +391,42 @@ socket.on("all",function(data){
 		$div.append($one);
 		var $two=$("<div class='float-left' style='width:74%'>");
 		$p=$("<p style='word-break:break-all;line-height:40px;''></p>");
-		var faceIndex=data.msg.indexOf("</span>")+7;
-		var faceStart=data.msg.indexOf("<span ");
-		if(faceIndex==6||faceStart==-1){
-			$p.text(data.msg);
-			$p.css("color",data.color);
+
+		
+var tmp=0;
+var faceArray=new Array();
+
+while(data.msg.indexOf("<span ",tmp)!=-1){
+  var obj=new Object();
+  obj.start=data.msg.indexOf("<span ",tmp);
+  obj.end=data.msg.indexOf("</span>",tmp)+7;
+  tmp=obj.end;
+  faceArray.push(obj);
+}
+console.log(faceArray);
+
+var obj=new Object();
+obj.end=0;
+faceArray[-1]=obj;
+console.log(faceArray);
+console.log(data.msg);
+for(var i=0;i<faceArray.length;i++){
+  $p.append($("<span>").text(data.msg.substring((faceArray[i-1].end),faceArray[i].start)));
+  $p.append($(data.msg.substring(faceArray[i].start,faceArray[i].end)));
+  
+}
+
+$p.append($("<span>").text(data.msg.substring(faceArray[faceArray.length-1].end)));
+console.log($p.html())
+
+console.log($p)
+		
+		
 			$two.append($p);
 			$div.append($two);
 			$("#chat_show").append($div);
 			$("#chat_show").scrollTop(111111);
-		}else{
-			var face=data.msg.substr(faceStart,faceIndex);
-			data.msg=data.msg;
-			$p.text(data.msg);
-			$p.append($(face));
-			$p.css("color",'"'+data.color+'"');
-			$p.css("color",data.color);
-			//$two.append($("<p style='word-break:break-all;line-height:40px;''>"+data.msg+"</p>"));
-			$two.append($p);
-			$div.append($two);
-			$("#chat_show").append($div);
-			$("#chat_show").scrollTop(111111);
-		}
+		
 	}else {
 		var $div=$("<div class='clear_after'>");
 		var $one=$("<div class='float-left' style='width:25%'>");
@@ -426,31 +440,44 @@ socket.on("all",function(data){
 		$div.append($one);
 		var $two=$("<div class='float-left' style='width:74%'>");
 		$p=$("<p style='word-break:break-all;line-height:40px;''></p>");
-		//$p.text(data.msg);
-		var faceIndex=data.msg.indexOf("</span>")+7;
-		var faceStart=data.msg.indexOf("<span ");
-		if(faceStart==-1||faceIndex==6){
-			$p.text(data.msg);
-			$p.css("color",data.color);
-			$two.append($p);
-			$div.append($two);
-			$("#chat_show").append($div);
-			$("#chat_show").scrollTop(111111);
-		}else{
-			var face=data.msg.substr(faceStart,faceIndex);
-			data.msg=data.msg;
-			var stringOne=data.msg.substr(0,faceStart);
-			var stringTwo=data.msg.substr(faceIndex);
-			data.msg=stringOne+stringTwo;
-			$p.text(data.msg);
-			$p.append($(face));
+
+		
+var tmp=0;
+var faceArray=new Array();
+
+while(data.msg.indexOf("<span ",tmp)!=-1){
+  var obj=new Object();
+  obj.start=data.msg.indexOf("<span ",tmp);
+  obj.end=data.msg.indexOf("</span>",tmp)+7;
+  tmp=obj.end;
+  faceArray.push(obj);
+}
+console.log(faceArray);
+
+var obj=new Object();
+obj.end=0;
+faceArray[-1]=obj;
+console.log(faceArray);
+console.log(data.msg);
+for(var i=0;i<faceArray.length;i++){
+  $p.append($("<span>").text(data.msg.substring((faceArray[i-1].end),faceArray[i].start)));
+  $p.append($(data.msg.substring(faceArray[i].start,faceArray[i].end)));
+  
+}
+
+$p.append($("<span>").text(data.msg.substring(faceArray[faceArray.length-1].end)));
+console.log($p.html())
+
+console.log($p)
+		
+		
 			$p.css("color",'"'+data.color+'"');
 			$p.css("color",data.color);
 			$two.append($p);
 			$div.append($two);
 			$("#chat_show").append($div);
 			$("#chat_show").scrollTop(111111);
-		}
+		
 	}
 })
 
@@ -474,11 +501,61 @@ socket.on("all_done",function(data){
 		}else{
 			var face=data.msg.substr(faceStart,faceIndex);
 			data.msg=data.msg;
-			var stringOne=data.msg.substr(0,faceStart);
-			var stringTwo=data.msg.substr(faceIndex);
-			data.msg=stringOne+stringTwo;
-			$p.text(data.msg);
-			$p.append($(face));
+	/*		
+			var tmp=0;
+			var faceArray=new Array();
+			
+			while(data.msg.indexOf("<span ",tmp)!=-1){
+				var obj=new Object();
+				obj.start=data.msg.indexOf("<span ",tmp);
+				obj.end=data.msg.indexOf("</span>",tmp);
+				faceArray.push(obj);
+				tmp=obj.end+1;
+			};
+			
+			for(var i=0;i<faceArray.length;i++){
+				$p.append($("<span>").text(data.msg.substr(faceArray[i-1].end||0,faceArray[i].start)));
+				$p.append($(data.msg.substr(faceArray[i].start,faceArray[i].end)));
+			}
+			
+			$p.append($("<span>").text(data.msg.subst(faceArray[faceArray.length-1].end)));
+			
+			
+ 
+*/
+var tmp=0;
+var faceArray=new Array();
+
+while(data.msg.indexOf("<span ",tmp)!=-1){
+  var obj=new Object();
+  obj.start=data.msg.indexOf("<span ",tmp);
+  obj.end=data.msg.indexOf("</span>",tmp)+7;
+  tmp=obj.end;
+  faceArray.push(obj);
+}
+console.log(faceArray);
+
+var obj=new Object();
+obj.end=0;
+faceArray[-1]=obj;
+console.log(faceArray);
+console.log(data.msg);
+for(var i=0;i<faceArray.length;i++){
+  $p.append($("<span>").text(data.msg.substring((faceArray[i-1].end),faceArray[i].start)));
+  $p.append($(data.msg.substring(faceArray[i].start,faceArray[i].end)));
+  
+}
+
+$p.append($("<span>").text(data.msg.substring(faceArray[faceArray.length-1].end)));
+console.log($p.html())
+
+console.log($p)
+			
+			//var stringOne=data.msg.substr(0,faceStart);
+			//var stringTwo=data.msg.substr(faceIndex);
+			//data.msg=stringOne+stringTwo;
+			//$p.text(data.msg);
+			//$p.append($(face));
 			$p.css("color",'"'+data.color+'"');
 			$p.css("color",data.color);
 			console.log($p);
