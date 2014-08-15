@@ -357,11 +357,8 @@ socket.on("welcome",function(data){
 	var username=data.username;
 	myName=data.username;
 
-	$("#title").text("There are "+numUsers+"user(s)");
-	clearTimeout(time_out);
-	time_out=setTimeout(function(){
-		$("#title").text("chat for us")
-	},2000);
+	changeTitle("There are",numUsers,"user(s)");
+
 	$("#your_name").text(username);
 	updateOnline(usernames);
 })
@@ -370,11 +367,8 @@ socket.on("welcome_new",function(data){
 	var usernames=data.usernames;
 	var username=data.username;
 
-	$("#title").text("welcome "+username+" and There are "+numUsers+"user(s)");
-	clearTimeout(time_out);
-	time_out=setTimeout(function(){
-		$("#title").text("chat for us")
-	},2000);
+	changeTitle("welcome",username,"come here");
+
 	updateOnline(usernames);
 })
 
@@ -618,11 +612,8 @@ socket.on("stop typing",function(data){
 socket.on("leave",function(data){
 	updateOnline(data.usernames);
 	clearTimeout(time_out);
-	$("#title").text(data.username+" is gone!");
-	clearTimeout(time_out);
-	time_out=setTimeout(function(){
-		$("#title").text("chat for us")
-	},2000);
+
+	changeTitle("",data.username,"is gone!");
 })
 
 //emit
@@ -677,6 +668,17 @@ function sendMessage(){
 			}else{
 				alert("Nothing Input,Sorry!");
 			}
+}
+
+function changeTitle(stringOne,message,stringTwo,time){
+	if(!time){
+		time=2000;
+	}
+	clearTimeout(time_out);
+	$("#title").text(stringOne+" "+message+" "+stringTwo);
+	time_out=setTimeout(function(){
+		$("#title").text("chat for us");
+	},time);
 }
 
 </script>
