@@ -430,13 +430,24 @@ console.log($p)
 	}else {
 		var $div=$("<div class='clear_after'>");
 		var $one=$("<div class='float-left' style='width:25%'>");
+
+
+		console.log(data.to);
+		console.log(myName);
+
 		if(data.from.length>3){
 			data.from=data.from.substring(4);
 		}
-		if(data.to.length>3){
-			data.to=data.to.substring(4);
+		if(data.to==myName){
+			data.to="I";
+			$one.append($("<h2 style='margin:0px;color:red;'></h2>").text(data.from+">"+data.to));
+		}else{
+			if(data.to.length>3){
+				data.to=data.to.substring(4);
+			}
+			$one.append($("<h2 style='margin:0px;'></h2>").text(data.from+">"+data.to));
 		}
-		$one.append($("<h2 style='margin:0px;'></h2>").text(data.from+">"+data.to));
+
 		$div.append($one);
 		var $two=$("<div class='float-left' style='width:74%'>");
 		$p=$("<p style='word-break:break-all;line-height:40px;''></p>");
