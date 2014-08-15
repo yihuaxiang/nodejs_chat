@@ -164,7 +164,7 @@ io.on("connection",function(socket){
 
 
 server.listen(port,function(){
-	console.log("8888");
+	console.log(port);
 })
 
 ///functions
