@@ -393,17 +393,26 @@ socket.on("all",function(data){
 		$p=$("<p style='word-break:break-all;line-height:40px;''></p>");
 		var faceIndex=data.msg.indexOf("</span>")+7;
 		var faceStart=data.msg.indexOf("<span ");
-		var face=data.msg.substr(faceStart,faceIndex);
-		data.msg=data.msg;
-		$p.text(data.msg);
-		$p.append($(face));
-		$p.css("color",'"'+data.color+'"');
-		$p.css("color",data.color);
-		//$two.append($("<p style='word-break:break-all;line-height:40px;''>"+data.msg+"</p>"));
-		$two.append($p);
-		$div.append($two);
-		$("#chat_show").append($div);
-		$("#chat_show").scrollTop(111111);
+		if(faceIndex==6||faceStart==-1){
+			$p.text(data.msg);
+			$p.css("color",data.color);
+			$two.append($p);
+			$div.append($two);
+			$("#chat_show").append($div);
+			$("#chat_show").scrollTop(111111);
+		}else{
+			var face=data.msg.substr(faceStart,faceIndex);
+			data.msg=data.msg;
+			$p.text(data.msg);
+			$p.append($(face));
+			$p.css("color",'"'+data.color+'"');
+			$p.css("color",data.color);
+			//$two.append($("<p style='word-break:break-all;line-height:40px;''>"+data.msg+"</p>"));
+			$two.append($p);
+			$div.append($two);
+			$("#chat_show").append($div);
+			$("#chat_show").scrollTop(111111);
+		}
 	}else {
 		var $div=$("<div class='clear_after'>");
 		var $one=$("<div class='float-left' style='width:25%'>");
@@ -420,17 +429,26 @@ socket.on("all",function(data){
 		//$p.text(data.msg);
 		var faceIndex=data.msg.indexOf("</span>")+7;
 		var faceStart=data.msg.indexOf("<span ");
-		var face=data.msg.substr(faceStart,faceIndex);
-		data.msg=data.msg;
-		$p.text(data.msg);
-		$p.append($(face));
-		$p.css("color",'"'+data.color+'"');
-		$p.css("color",data.color);
-		$two.append($p);
-		//$two.append($("<p style='word-break:break-all;line-height:40px;''></p>").text(data.msg));
-		$div.append($two);
-		$("#chat_show").append($div);
-		$("#chat_show").scrollTop(111111);
+		if(faceStart==-1||faceIndex==6){
+			$p.text(data.msg);
+			$p.css("color",data.color);
+			$two.append($p);
+			$div.append($two);
+			$("#chat_show").append($div);
+			$("#chat_show").scrollTop(111111);
+		}else{
+			var face=data.msg.substr(faceStart,faceIndex);
+			data.msg=data.msg;
+			$p.text(data.msg);
+			$p.append($(face));
+			$p.css("color",'"'+data.color+'"');
+			$p.css("color",data.color);
+			$two.append($p);
+			//$two.append($("<p style='word-break:break-all;line-height:40px;''></p>").text(data.msg));
+			$div.append($two);
+			$("#chat_show").append($div);
+			$("#chat_show").scrollTop(111111);
+		}
 	}
 })
 
@@ -444,19 +462,28 @@ socket.on("all_done",function(data){
 		//$p.text(data.msg);
 		var faceIndex=data.msg.indexOf("</span>")+7;
 		var faceStart=data.msg.indexOf("<span ");
-		var face=data.msg.substr(faceStart,faceIndex);
-		data.msg=data.msg;
-		$p.text(data.msg);
-		$p.append($(face));
-		$p.css("color",'"'+data.color+'"');
-		$p.css("color",data.color);
-		console.log($p);
-		//alert(data.color);
-		$two.append($p);
-		//$two.append($("<p style='word-break:break-all;text-align:right;line-height:40px;'></p>").text(data.msg));
-		$div.append($two);
-		$("#chat_show").append($div);
-		$("#chat_show").scrollTop(111111);
+		if(faceStart==-1||faceIndex==6){
+			$p.text(data.msg);
+			$p.css("color",data.color);
+			$two.append($p);
+			$div.append($two);
+			$("#chat_show").append($div);
+			$("#chat_show").scrollTop(111111);
+		}else{
+			var face=data.msg.substr(faceStart,faceIndex);
+			data.msg=data.msg;
+			$p.text(data.msg);
+			$p.append($(face));
+			$p.css("color",'"'+data.color+'"');
+			$p.css("color",data.color);
+			console.log($p);
+			//alert(data.color);
+			$two.append($p);
+			//$two.append($("<p style='word-break:break-all;text-align:right;line-height:40px;'></p>").text(data.msg));
+			$div.append($two);
+			$("#chat_show").append($div);
+			$("#chat_show").scrollTop(111111);
+		}
 })
 
 socket.on("private",function(data){
