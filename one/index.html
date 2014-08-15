@@ -439,12 +439,14 @@ socket.on("all",function(data){
 		}else{
 			var face=data.msg.substr(faceStart,faceIndex);
 			data.msg=data.msg;
+			var stringOne=data.msg.substr(0,faceStart);
+			var stringTwo=data.msg.substr(faceIndex);
+			data.msg=stringOne+stringTwo;
 			$p.text(data.msg);
 			$p.append($(face));
 			$p.css("color",'"'+data.color+'"');
 			$p.css("color",data.color);
 			$two.append($p);
-			//$two.append($("<p style='word-break:break-all;line-height:40px;''></p>").text(data.msg));
 			$div.append($two);
 			$("#chat_show").append($div);
 			$("#chat_show").scrollTop(111111);
@@ -472,6 +474,9 @@ socket.on("all_done",function(data){
 		}else{
 			var face=data.msg.substr(faceStart,faceIndex);
 			data.msg=data.msg;
+			var stringOne=data.msg.substr(0,faceStart);
+			var stringTwo=data.msg.substr(faceIndex);
+			data.msg=stringOne+stringTwo;
 			$p.text(data.msg);
 			$p.append($(face));
 			$p.css("color",'"'+data.color+'"');
