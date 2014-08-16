@@ -25,6 +25,15 @@ html body{
 	-ms-transition:all 1s ease-in;
 	transition:all 1s ease-in;
 	color:white;
+	width:85px;
+
+
+
+	-webkit-transition:left 0.6s ease-out;
+	-moz-transition:left 0.6s ease-out;
+	-o-transition:left 0.6s ease-out;
+	-ms-transition:left 0.6s ease-out;
+	transition:left 0.6s ease-out;
 }
 #main .typing{
 	-webkit-transition:all 1s ease-in;
@@ -73,6 +82,9 @@ html body{
 	border-radius:10px;
 	padding-bottom:200px;
 	over-flow:scroll;
+}
+#chat_online{
+	overflow-x:hidden;
 }
 #chat_show{
 	padding:10px;
@@ -173,6 +185,7 @@ html body{
 
 #chat_online dd{
 	margin-top:3px;
+	position:relative;
 }
 
 @-webkit-keyframes shake {
@@ -467,6 +480,7 @@ $(window).on("keydown",function(e){
 	}
 })
 
+var first_time=true;
 var time_out;
 var time_out1;
 var myName="";
@@ -753,15 +767,34 @@ function updateOnline(usernames){
 	var $select_users=$('<select  id="selelct_users" class="form-control" >');
 	$select_users.append("<option>all</optioin>");
 	$users_dl.append($("<dt>online users</dt>"));
-	for(var key in usernames){
-		$users_dl.append($("<dd class='btn btn-success user_oneline'>"+key+"</dd>"));
-		if(key==myName){
+	var i=0;
+	if(first_time){
+		for(var key in usernames){
+			$users_dl.append($("<dd class='btn btn-success user_oneline' style='left:"+((97)*i)+"px"+";'>"+key+"</dd>"));
+			i++;
+			if(key==myName){
 
-		}else{	
-			$select_users.append($("<option>"+key+"</options>"));
+			}else{	
+				$select_users.append($("<option>"+key+"</options>"));
+			}
 		}
+	}else{
+		for(var key in usernames){
+			$users_dl.append($("<dd class='btn btn-success user_oneline' >"+key+"</dd>"));
+			i++;
+			if(key==myName){
+
+			}else{	
+				$select_users.append($("<option>"+key+"</options>"));
+			}
+		}	
 	}
+
 	$("#chat_online").html($users_dl);
+	//$("#chat_online dd").css("top","0px");
+	setTimeout(function(){
+		$(".user_oneline").css("left","0px")
+	},0);
 	$("#select_div").html($select_users);
 
 }
