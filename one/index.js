@@ -77,6 +77,8 @@ socket.on("all",function(data){
 
 socket.on("all_done",function(data){
 	
+	$("#enter").text("Enter");
+
 	var $div;
 
 	$div=dataToDiv(data,false,"right");
@@ -189,6 +191,8 @@ function sendMessage(){
 					//$("#select_face").find("option").eq(1).text()
 				}
 				//alert(string);
+				$("#enter").text("Send.");
+				//alert("done");
 				socket.emit("all",{
 					to:$("#selelct_users").val(),
 					msg:string,
