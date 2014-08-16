@@ -56,8 +56,8 @@
 		</div>
 		<div id="select" class="col-xs-2">
 			<form class="form">
-					<div  id="select_div" class="controls">
-						<select id="selelct_users" class="form-control" >
+					<div  id="select_div" class="controls"  data-toggle="popover" data-content='choose a person that you want sent you message to.' data-trigger='hover'  >
+						<select id="selelct_users" class="form-control">
 							<option>loading...</option>
 						</select>
 					</div>
@@ -65,7 +65,7 @@
 		</div>
 		<div id="face" class="col-xs-2">
 			<form class="form">
-					<div  id="face_div" class="controls">
+					<div  id="face_div" class="controls" data-toggle='popover' data-trigger='hover' data-content='choose a face that you want to send to others.'>
 						<select id="select_face" class="form-control" >
 							<option>add face</option>
 							<option>happy2</option>
@@ -106,7 +106,7 @@
 			<a id="history" href="/history?page=1" target="_blank" type="button" class="btn btn-default">history</a>
 		</li>
 		<li>
-			<a type="button" class="btn btn-default">function</a>
+			<a id="about" type="button" class="btn btn-default" data-toggle="modal" data-target="#aboutModal">about</a>
 		</li>
 		<li>
 			<a type="button" class="btn btn-default">function</a>
@@ -122,6 +122,26 @@
 		</li>
 	</ul>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">About the website</h4>
+      </div>
+      <div class="modal-body">
+        <p>This is just a website for fun,I would like to hear that you like it,but if you do not like it ,be gentle,if you'd like to tell me that you are pleasure to find out the website mail tome (fudongdonguestc@gmail.com),if you would like to get the source code (although what I write is awful) visit <a href="https://github.com/yihuaxiang/nodejs_chat" target="_blank">https://github.com/yihuaxiang/nodejs_chat</a></p>
+        <p>thinks for you visit</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="index.js"></script>
 </body>
 </html>

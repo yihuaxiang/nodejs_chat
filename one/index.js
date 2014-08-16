@@ -9,6 +9,8 @@ $("#enter").click(function(){
 	sendMessage();
 })
 
+$('*').popover();
+
 $(window).on("keydown",function(e){
 	if(e.keyCode==116){
 		var flag=false;
