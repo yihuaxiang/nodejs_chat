@@ -58,37 +58,122 @@ app.get("/",function(req,res){
 })
 
 app.get("/history",function(req,res){
-	var page=req.query.page;
-	page=Number(page);
-	if(page<=0){
-		page=1;
-	}
-	if(!page){
-		page=1;
-	}
-	//console.log(page);
-	var sql="select * from history limit "+((page-1)*10)+",10";
-	console.log(sql);
-
-	var sql1="select * from history";
-	var pages=new Array();
-	connection.query(sql1,function(err,rows,fields){
-		if(err) throw err;
-
-		for(var i=0;i<=(rows.length/10);i++){
-			pages.push(i);
+	if(req.query.f){
+		var f=req.query.f.replace('"',"&quot;");
+		var page=req.query.page;
+		page=Number(page);
+		if(page<=0){
+			page=1;
 		}
-	})
+		if(!page){
+			page=1;
+		}
+		//console.log(page);
+		if(f!=""){
+			var sql='select * from history where f like "%'+f+'%" limit '+((page-1)*100)+",100";
+		}else{
+			var sql="select * from history limit "+((page-1)*100)+",100";
+		}
+		
+		console.log(sql);
 
-	connection.query(sql,function(err,rows,fields){
-		if(err) throw err;
-		//res.json(rows);
-	
-		res.render("history",{
-			rows:rows,
-			pages:pages
-		});
-	})
+		var sql1="select * from history";
+
+	}else if(req.query.t){
+		var t=req.query.t.replace('"',"&quot;");
+		var page=req.query.page;
+		page=Number(page);
+		if(page<=0){
+			page=1;
+		}
+		if(!page){
+			page=1;
+		}
+		//console.log(page);
+		if(t!=""){
+			var sql='select * from history where t like "%'+t+'%" limit '+((page-1)*100)+',100';
+		}else{
+			var sql="select * from history limit "+((page-1)*100)+",100";
+		}
+		
+		console.log(sql);
+
+		var sql1="select * from history";
+	}else if(req.query.message){
+		var message=req.query.message.replace('"',"&quot;");
+		var page=req.query.page;
+		page=Number(page);
+		if(page<=0){
+			page=1;
+		}
+		if(!page){
+			page=1;
+		}
+		//console.log(page);
+		if(message!=""){
+			var sql='select * from history where message like "%'+message+'%" limit '+((page-1)*100)+',100';
+		}else{
+			var sql="select * from history limit "+((page-1)*100)+",100";
+		}
+		
+		console.log(sql);
+
+		var sql1="select * from history";
+	}else if(req.query.d){
+		var d=req.query.d.replace('"',"&quot;");
+		var page=req.query.page;
+		page=Number(page);
+		if(page<=0){
+			page=1;
+		}
+		if(!page){
+			page=1;
+		}
+		//console.log(page);
+		if(d!=""){
+			var sql='select * from history where d like "%'+d+'%" limit '+((page-1)*100)+',100';
+		}else{
+			var sql="select * from history limit "+((page-1)*100)+",100";
+		}
+		
+		console.log(sql);
+
+		var sql1="select * from history";
+	}else{
+		var page=req.query.page;
+		page=Number(page);
+		if(page<=0){
+			page=1;
+		}
+		if(!page){
+			page=1;
+		}
+		//console.log(page);
+		var sql="select * from history limit "+((page-1)*10)+",100";
+		console.log(sql);
+
+		var sql1="select * from history";
+	}
+
+		var pages=new Array();
+		connection.query(sql1,function(err,rows,fields){
+			if(err) throw err;
+
+			for(var i=0;i<=(rows.length/100);i++){
+				pages.push(i);
+			}
+		})
+
+		connection.query(sql,function(err,rows,fields){
+			if(err) throw err;
+			//res.json(rows);
+		
+			res.render("history",{
+				rows:rows,
+				pages:pages
+			});
+		})
+
 })
 
 
