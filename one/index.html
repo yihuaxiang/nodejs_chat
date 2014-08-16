@@ -1,5 +1,6 @@
 <html>
 <head>
+<title>chat for us</title>
 <link rel="stylesheet" href="style.css" />
 <style>
 htmk,body{
@@ -483,6 +484,7 @@ $(window).on("keydown",function(e){
 var first_time=true;
 var time_out;
 var time_out1;
+var title_time_out;
 var myName="";
 var socket=io("http://localhost");
 
@@ -510,6 +512,7 @@ socket.on("welcome_new",function(data){
 
 
 socket.on("all",function(data){
+	titleNotice("news coming......");
 	console.log(data);
 	if(data.to=="all"){
 		var $div=$("<div class='clear_after'>");
@@ -834,6 +837,28 @@ function changeTitle(stringOne,message,stringTwo,time){
 	time_out=setTimeout(function(){
 		$("#title").text("chat for us");
 	},time);
+}
+
+function titleNotice(string){
+	var mode=false;
+	clearInterval(title_time_out);
+	title_time_out=setInterval(function(){
+		if(mode){
+			$("title").text(".."+string+"..");
+			mode=false;
+		}else{
+			$("title").text("...."+string+".....");
+			mode=true;
+		}
+	},300)
+
+	setTimeout(function(){
+		clearInterval(title_time_out);
+		$("title").text("char for us");
+	},3000);
+
+
+
 }
 
 </script>
