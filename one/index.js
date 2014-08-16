@@ -242,7 +242,7 @@ function titleNotice(string){
 function dataToDiv(data,isToMe,direction){
 	var $div=$("<div class='clear_after'></div>");
 	console.log($div);
-	var $one=$("<div class='float-"+direction+"' style='width:25%' >");
+	var $one=$("<div class='float-"+direction+"' style='width:22%' >");
 	if(isToMe){
 		var $h2=$("<h2 style='margin:0px;color:red'>");
 		$h2.text(data.from+">I");
