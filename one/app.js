@@ -1,29 +1,3 @@
-/*
-var app=require("http").createServer(handler);
-var io=require("socket.io")(app);
-var fs=require("fs");
-
-app.listen(8888);
-
-function handler(req,res){
-	fs.readFile(__dirname+"/index.html",function(err,data){
-		if(err){
-			res.write(500);
-			return res.end("sorry");
-		}else{
-			res.writeHead(200);
-			res.end(data);
-		}
-	});
-}
-
-io.on("connection",function(socket){
-	socket.emit("news",{hello:"world"});
-	socket.on("my other event",function(data){
-		console.log(data);
-	})
-})
-*/
 //var sta=require("./static");
 var mime=require("./mime").types;
 var express=require("express");
@@ -40,12 +14,7 @@ var port=8801;
 var connection;
 
 connection=connect_mysql.connect(connection);
-/*
-connection.query("insert into history values(null,'user1234',null,'I love you')",function(err,rows,fields){
-	if(err){
-		throw err;
-	}
-})*/
+
 
 app.engine(".html",require("ejs").__express);
 app.set("views",__dirname+"/views");
