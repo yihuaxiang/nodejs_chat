@@ -47,6 +47,9 @@ connection.query("insert into history values(null,'user1234',null,'I love you')"
 	}
 })*/
 
+app.engine(".html",require("ejs").__express);
+app.set("views",__dirname+"/views");
+app.set("view engine","html");
 //app.use(sta("./"));
 app.use(express.static(__dirname ));
 
@@ -56,18 +59,35 @@ app.get("/",function(req,res){
 
 app.get("/history",function(req,res){
 	var page=req.query.page;
+	page=Number(page);
+	if(page<=0){
+		page=1;
+	}
 	if(!page){
 		page=1;
 	}
 	//console.log(page);
 	var sql="select * from history limit "+((page-1)*10)+",10";
 	console.log(sql);
+
+	var sql1="select * from history";
+	var pages=new Array();
+	connection.query(sql1,function(err,rows,fields){
+		if(err) throw err;
+
+		for(var i=0;i<=(rows.length/10);i++){
+			pages.push(i);
+		}
+	})
+
 	connection.query(sql,function(err,rows,fields){
 		if(err) throw err;
-		res.writeHead(200,{
-			"content-type":"text/json;charset='utf8'"
-		})
-		res.json(rows);
+		//res.json(rows);
+	
+		res.render("history",{
+			rows:rows,
+			pages:pages
+		});
 	})
 })
 
