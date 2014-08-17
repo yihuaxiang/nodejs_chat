@@ -129,6 +129,7 @@ app.get("/history",function(req,res){
 		var sql1="select * from history";
 	}
 
+
 		var pages=new Array();
 		connection.query(sql1,function(err,rows,fields){
 			if(err) throw err;
@@ -144,7 +145,8 @@ app.get("/history",function(req,res){
 		
 			res.render("history",{
 				rows:rows,
-				pages:pages
+				pages:pages,
+				pageNow:page
 			});
 		})
 
@@ -194,7 +196,8 @@ app.get("/comments",function(req,res){
 			}
 			res.render("comments",{
 				comments:rows,
-				pages:pages
+				pages:pages,
+				pageNow:page
 			})
 		}
 	})

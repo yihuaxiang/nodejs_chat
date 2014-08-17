@@ -83,7 +83,7 @@ td:nth-child(4){
 			<ul class="pagination">
 				<li><a href="#">&laquo;</a></li>
 				<% pages.forEach(function(page){ %>
-					<li><a href="/history?page=<%= page+1 %>"><%= page+1 %></a></li>
+					<li <%= (page+1)==pageNow?"class=active":" " %>><a href="/history?page=<%= page+1 %>"><%= page+1 %></a></li>
 				<% }) %>
 				 <li><a href="#">&raquo;</a></li>
 			</ul>
