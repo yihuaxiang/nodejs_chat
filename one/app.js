@@ -4,6 +4,8 @@ var express=require("express");
 var app=express();
 var fs=require("fs");
 var path=require("path");
+var cookieParser=require("cookie-parser");
+var bodyParser=require("body-parser");
 
 var connect_mysql=require("./connect_mysql");
 
@@ -20,6 +22,9 @@ app.engine(".html",require("ejs").__express);
 app.set("views",__dirname+"/views");
 app.set("view engine","html");
 //app.use(sta("./"));
+
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(__dirname ));
 
 app.get("/",function(req,res){
@@ -143,6 +148,78 @@ app.get("/history",function(req,res){
 			});
 		})
 
+})
+
+app.get("/comments",function(req,res){
+	var page=req.query.page;
+	page=Number(page);
+	if(!page){
+		page=1;
+	}
+	if(page<1){
+		page=1;
+	}
+	page=Math.floor(page);
+
+	var sql='select * from comments order by id desc limit '+(page-1)*10+',10';
+	console.log(sql);
+
+	var pages=new Array();
+	connection.query("select * from comments",function(err,rows,field){
+		if(err){
+			res.end(err);
+		}else{
+			
+			for(var i=0;i<=rows.length/10;i++){
+				pages.push(i);
+			}
+
+			//res.json(pages);
+		}
+	})
+	connection.query(sql,function(err,rows,fields){
+		if(err){
+			console.log(err);
+			res.end("sorry");
+			return;
+		}else{
+			//res.json(rows);
+			res.render("comments",{
+				comments:rows,
+				pages:pages
+			})
+		}
+	})
+
+})
+
+app.post("/comments",function(req,res){
+	//res.json(req.body);
+	console.log(req.body);
+	var comment={
+		id:null,
+		name:"No Name",
+		content:"No Content",
+		tName:null,
+		tContent:null,
+		d:null
+	}	
+
+	for(var key in comment){
+		if(req.body[key]){
+			comment[key]=req.body[key];
+		}
+	}
+	console.log(comment);
+
+	var sql='insert into comments values (null,"'+comment.name+'","'+comment.content+'","'+comment.tName+'","'+comment.tContent+'",now())';
+	connection.query(sql,function(err){
+		if(err){
+			res.end("sorry");
+		}else{
+			res.redirect("back");
+		}
+	})
 })
 
 

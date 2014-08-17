@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<style>
+th,td{
+	border:1px red solid;
+	padding:10px;
+}
+#form{
+	position:absolute;
+	padding:4px 9px;
+background: #f3fcff;
+padding: 9px 14px;
+font-family: 微软雅黑;
+border: 1px solid rgba(0,0,0,.2);
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+-o-border-radius: 6px;
+-ms-border-radius: 6px;
+border-radius: 6px;
+-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-o-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-ms-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+</style>
+</head>
+<body>
+<table>	
+	<tr>
+		<th>index</th>
+		<th>name</th>
+		<th>content</th>
+		<th>to</th>
+		<th>about</th>
+		<th>data</th>
+		<th>handle</th>
+	</tr>
+	<% comments.forEach(function(comment){ %>
+		<tr>
+			<td><%= comment.id %></td>
+			<td class="name"><%= comment.name %></td>
+			<td class="content"><%= comment.content %></td>
+			<td><%= comment.t %></td>
+			<td><%= comment.about %></td>
+			<td><%= comment.d %></td>
+			<td class="" style="positioin:relative;">
+				<button type="button" class="reply btn btn-success">Reply</button>
+			</td>
+		</tr>
+	<% }) %>
+
+
+</table>
+
+	<hr />
+
+	<ul class="pagination">
+		<li><a href="#">&laquo;</a></li>
+		<% pages.forEach(function(page){ %>
+			<li><a href="/comments?page=<%= page+1 %>"><%= page+1 %></a></li>
+		<% }) %>
+		 <li><a href="#">&raquo;</a></li>
+	</ul>
+<script>
+$(".reply").click(function(){
+	$div=$('<div id="form"><form method="post" action=""><fieldset><input type="text" name="name" class="form-control" placeholder="your name" /><br /><textarea name="content" id="content" class="form-control" placeholder="your context"></textarea><br /><input id="submit" type="submit" value="submit" class="form-control" /></fieldset></form></div>');
+	$(".reply").parent().find("div").remove();
+	var $input=$("<input name='tName' type='hidden' value='"+$(this).parent().parent().find(".name").text()+"' />")
+	$div.find("form").append($input);
+	$input=$("<input type='hidden' name='tContent' value='"+$(this).parent().parent().find(".content").text()+"' />")
+	$div.find("form").append($input);
+	$(this).parent().append($div);
+
+	$("#submit").on("click",function(e){
+		var content=$("#content").val().trim();
+		if(content==""){
+			alert("Notheing Input");
+			e.preventDefault();
+			return false;
+		}else{
+
+		}
+	})
+
+})
+</script>
+</body>
+</html>
