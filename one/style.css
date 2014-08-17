@@ -328,3 +328,21 @@ html body{
 .icon-wondering2:before {
 	content: "\e620";
 }
+
+
+.shadow_box{
+background: #f3fcff;
+padding: 9px 14px;
+font-family: 微软雅黑;
+border: 1px solid rgba(0,0,0,.2);
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+-o-border-radius: 6px;
+-ms-border-radius: 6px;
+border-radius: 6px;
+-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-o-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-ms-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}

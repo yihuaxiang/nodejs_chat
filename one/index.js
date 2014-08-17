@@ -11,22 +11,38 @@ $("#enter").click(function(){
 
 $('*').popover();
 
-$(window).on("keydown",function(e){
-	if(e.keyCode==116){
-		var flag=false;
-		if(window.confirm("You will  leave ,are you sure ?")){
-			flag=true;
-		}else{
-			flag=false;
-		}
 
-		if(flag){
 
-		}else{
-			e.preventDefault();
+	//alert("done");
+	//$(window).on("unload",function(e){
+	//$(window).unload(function(e){
+		/*
+	$(window).on("keydown",function(e){
+		if(e.keyCode==116){
+			
+			var flag=false;
+			if(confirm("You will  leave ,are you sure ?")){
+				flag=true;
+			}else{
+				flag=false;
+			}
+
+			if(flag){
+
+			}else{
+				e.preventDefault();
+			}
+			
+			//alert("dslkkfj");
 		}
-	}
-})
+	})*/
+window.onbeforeunload = function() {   
+   // alert();  
+   //alert();
+   return "Are you sure to leave now ?";
+    //return false; // 可以阻止关闭  
+} 
+
 
 var first_time=true;
 var time_out;
@@ -202,7 +218,8 @@ function sendMessage(){
 				//alert($("#input_emit_box").val());
 		//}	
 			}else{
-				alert("Nothing Input,Sorry!");
+				//alert("Nothing Input,Sorry!");
+				myAlert('alert!','I am sorry ,but you input nothing to the input box ......<span class="icon-sad"></span>...');
 			}
 }
 
