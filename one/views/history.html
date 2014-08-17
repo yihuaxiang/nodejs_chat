@@ -19,6 +19,36 @@
 .hidden{
 	display:none;
 }
+td{
+	word-break:break-all;
+}
+td:nth-child(1){
+	width:15%;
+}
+td:nth-child(2){
+	width:8%;
+}
+td:nth-child(4){
+	width:17%;
+}
+#toTop{
+	-webkit-transition:all 1s ease-in;
+	-moz-transition:all 1s ease-in;
+	-o-transition:all 1s ease-in;
+	-ms-transition:all 1s ease-in;
+	transition:all 1s ease-in;
+
+	opacity:0;
+}
+#toTop.show{
+	-webkit-transition:all 1s ease-in;
+	-moz-transition:all 1s ease-in;
+	-o-transition:all 1s ease-in;
+	-ms-transition:all 1s ease-in;
+	transition:all 1s ease-in;
+
+	opacity:1;
+}
 </style>
 </head>
 <body>
@@ -55,5 +85,6 @@
 			 <li><a href="#">&raquo;</a></li>
 		</ul>
 	</div>
+<script src="../scroll.js"></script>
 </body>
 </html>
