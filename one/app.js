@@ -218,6 +218,9 @@ app.post("/comments",function(req,res){
 			comment[key]=req.body[key];
 		}
 	}
+
+
+
 	console.log(comment);
 
 	var sql='insert into comments values (null,"'+comment.name+'","'+comment.content+'","'+comment.tName+'","'+comment.tContent+'",now())';
