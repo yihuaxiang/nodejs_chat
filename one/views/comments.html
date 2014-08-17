@@ -10,9 +10,31 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <style>
-th,td{
-	border:1px red solid;
-	padding:10px;
+#title{
+	text-align:center;
+}
+#title a:hover{
+	text-decoration:none;
+}
+.hidden{
+	display:none;
+}
+td,tr{
+	word-break:break-all;
+	max-height:100px;
+	overflow:hidden;
+}
+td:nth-child(1){
+	width:6%;
+}
+td:nth-child(2),td:nth-child(4){
+	width:14%;
+}
+td:nth-child(3){
+	width:29.5%;
+}
+td:nth-child(5){
+	width:15%;
 }
 #form{
 	position:absolute;
@@ -32,65 +54,93 @@ border-radius: 6px;
 -ms-box-shadow: 0 5px 10px rgba(0,0,0,.2);
 box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
+#page_div{
+	text-align:center;
+}
 </style>
 </head>
 <body>
-<table>	
-	<tr>
-		<th>index</th>
-		<th>name</th>
-		<th>content</th>
-		<th>to</th>
-		<th>about</th>
-		<th>data</th>
-		<th>handle</th>
-	</tr>
-	<% comments.forEach(function(comment){ %>
-		<tr>
-			<td><%= comment.id %></td>
-			<td class="name"><%= comment.name %></td>
-			<td class="content"><%= comment.content %></td>
-			<td><%= comment.t %></td>
-			<td><%= comment.about %></td>
-			<td><%= comment.d %></td>
-			<td class="" style="positioin:relative;">
-				<button type="button" class="reply btn btn-success">Reply</button>
-			</td>
-		</tr>
-	<% }) %>
+	<div class="container">
+		<h1  id="title"><a href="/history">write page</a></h1>
+			<table class="table table-hover table-bordered">	
+				<tr>
+					<th>index</th>
+					<th>name</th>
+					<th>content</th>
+					<th>to</th>
+					<th>about</th>
+					<th>data</th>
+					<th>handle</th>
+				</tr>
+				<% comments.forEach(function(comment){ %>
+					<tr>
+						<td><%= comment.id %></td>
+						<td class="name"><%= comment.name %></td>
+						<td class="content"><%= comment.content %></td>
+						<td><%= comment.t %></td>
+						<td><%= comment.about %></td>
+						<td><%= comment.d %></td>
+						<td class="" style="position:;">
+							<button type="button" class="reply btn btn-success">Reply</button>
+						</td>
+					</tr>
+				<% }) %>
 
 
-</table>
+			</table>
 
 	<hr />
-
-	<ul class="pagination">
-		<li><a href="#">&laquo;</a></li>
-		<% pages.forEach(function(page){ %>
-			<li><a href="/comments?page=<%= page+1 %>"><%= page+1 %></a></li>
-		<% }) %>
-		 <li><a href="#">&raquo;</a></li>
-	</ul>
+	<div id="page_div">
+		<ul class="pagination">
+			<li><a href="#">&laquo;</a></li>
+			<% pages.forEach(function(page){ %>
+				<li><a href="/comments?page=<%= page+1 %>"><%= page+1 %></a></li>
+			<% }) %>
+			 <li><a href="#">&raquo;</a></li>
+		</ul>
+	</div>
+</div>
 <script>
 $(".reply").click(function(){
-	$div=$('<div id="form"><form method="post" action=""><fieldset><input type="text" name="name" class="form-control" placeholder="your name" /><br /><textarea name="content" id="content" class="form-control" placeholder="your context"></textarea><br /><input id="submit" type="submit" value="submit" class="form-control" /></fieldset></form></div>');
-	$(".reply").parent().find("div").remove();
-	var $input=$("<input name='tName' type='hidden' value='"+$(this).parent().parent().find(".name").text()+"' />")
-	$div.find("form").append($input);
-	$input=$("<input type='hidden' name='tContent' value='"+$(this).parent().parent().find(".content").text()+"' />")
-	$div.find("form").append($input);
-	$(this).parent().append($div);
+	if($(this).parent().find("div").length){
+		$(this).parent().find("div").remove();
+		//alert("hide");
+	}else{
+		//alert("show");
+		$div=$('<div id="form"><form method="post" action=""><fieldset><input id="name" type="text" name="name" class="form-control" placeholder="your name" /><br /><textarea name="content" id="content" class="form-control" placeholder="your context"></textarea><br /><input id="submit" type="submit" value="submit" class="form-control" /></fieldset></form></div>');
+		$(".reply").parent().find("div").remove();
+		var $input=$("<input name='tName' type='hidden' value='"+$(this).parent().parent().find(".name").text()+"' />")
+		$div.find("form").append($input);
+		$input=$("<input type='hidden' name='tContent' value='"+$(this).parent().parent().find(".content").text()+"' />")
+		$div.find("form").append($input);
+		$(this).parent().append($div);
 
-	$("#submit").on("click",function(e){
-		var content=$("#content").val().trim();
-		if(content==""){
-			alert("Notheing Input");
-			e.preventDefault();
-			return false;
-		}else{
+		$("#form").on("keydown",function(event){
+			if(event.ctrlKey&&event.keyCode==13){
+				var content=$("#content").val().trim();
+				var name=$("#name").val().trim();
+				if(content==""||name==""){
+					alert("name or content is empty!");
+					return false;
+				}else{
+					$("#submit").click();
+				}
+			}
+		})
 
-		}
-	})
+		$("#submit").on("click",function(e){
+			var content=$("#content").val().trim();
+			var name=$("#name").val().trim();
+			if(content==""||name==""){
+				alert("name or content is empty!");
+				e.preventDefault();
+				return false;
+			}else{
+
+			}
+		})	
+	}
+
 
 })
 </script>

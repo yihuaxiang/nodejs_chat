@@ -184,6 +184,14 @@ app.get("/comments",function(req,res){
 			return;
 		}else{
 			//res.json(rows);
+			for(var i=0;i<rows.length;i++){
+				if(rows[i].content.length>80){
+					rows[i].content=rows[i].content.substr(0,80)+"...";
+				}
+				if(rows[i].about.length>30){
+					rows[i].about=rows[i].about.substr(0,30)+"...";
+				}
+			}
 			res.render("comments",{
 				comments:rows,
 				pages:pages

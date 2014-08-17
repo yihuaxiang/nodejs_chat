@@ -49,6 +49,9 @@ td:nth-child(4){
 
 	opacity:1;
 }
+#page_div{
+	text-align:center;
+}
 </style>
 </head>
 <body>
@@ -76,14 +79,15 @@ td:nth-child(4){
 				</tr>
 			<% }) %>
 		</table>
-
-		<ul class="pagination">
-			<li><a href="#">&laquo;</a></li>
-			<% pages.forEach(function(page){ %>
-				<li><a href="/history?page=<%= page+1 %>"><%= page+1 %></a></li>
-			<% }) %>
-			 <li><a href="#">&raquo;</a></li>
-		</ul>
+		<div id="page_div">
+			<ul class="pagination">
+				<li><a href="#">&laquo;</a></li>
+				<% pages.forEach(function(page){ %>
+					<li><a href="/history?page=<%= page+1 %>"><%= page+1 %></a></li>
+				<% }) %>
+				 <li><a href="#">&raquo;</a></li>
+			</ul>
+		</div>
 	</div>
 <script src="../scroll.js"></script>
 </body>
