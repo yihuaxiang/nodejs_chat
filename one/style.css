@@ -346,3 +346,20 @@ border-radius: 6px;
 -ms-box-shadow: 0 5px 10px rgba(0,0,0,.2);
 box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
+
+.move:hover{
+ box-shadow: 2px 2px 5px 10px rgba(160, 142, 128, 1) inset, 1px 1px 4px 5px rgba(22, 22, 22, 0.47);
+    cursor: pointer;
+    -webkit-transition:all 0.5s ease-in;
+    -mz-transition:all 0.5s ease-in;
+    -o-transition:all 0.5s ease-in;
+    -ms-transition:all 0.5s ease-in;
+    transition:all 0.5s ease-in;
+}
+.move{
+    -webkit-transition:all 0.5s ease-in;
+    -mz-transition:all 0.5s ease-in;
+    -o-transition:all 0.5s ease-in;
+    -ms-transition:all 0.5s ease-in;
+    transition:all 0.5s ease-in;
+}

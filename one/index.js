@@ -13,34 +13,10 @@ $('*').popover();
 
 
 
-	//alert("done");
-	//$(window).on("unload",function(e){
-	//$(window).unload(function(e){
-		/*
-	$(window).on("keydown",function(e){
-		if(e.keyCode==116){
-			
-			var flag=false;
-			if(confirm("You will  leave ,are you sure ?")){
-				flag=true;
-			}else{
-				flag=false;
-			}
-
-			if(flag){
-
-			}else{
-				e.preventDefault();
-			}
-			
-			//alert("dslkkfj");
-		}
-	})*/
 window.onbeforeunload = function() {   
-   // alert();  
-   //alert();
+
    return "Are you sure to leave now ?";
-    //return false; // 可以阻止关闭  
+
 } 
 
 
@@ -219,7 +195,12 @@ function sendMessage(){
 		//}	
 			}else{
 				//alert("Nothing Input,Sorry!");
-				myAlert('alert!','I am sorry ,but you input nothing to the input box ......<span class="icon-sad"></span>...');
+				//myAlert('alert!','I am sorry ,but you input nothing to the input box ......<span class="icon-sad"></span>...');
+				$("body").myAlert({
+					title:"alert",
+					content:'I am sorry ,but you input nothing to the input box ......<span class="icon-sad"></span>...'
+				})
+				 $("#move_handle").moveAble({divId:"alert_div"})
 			}
 }
 
