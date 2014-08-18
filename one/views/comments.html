@@ -112,6 +112,40 @@ transition:all 0.3s ease-out;
 	float:right;
 	width:49%;
 }
+
+.shadow_box{
+background: #f3fcff;
+padding: 9px 14px;
+font-family: 微软雅黑;
+border: 1px solid rgba(0,0,0,.2);
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+-o-border-radius: 6px;
+-ms-border-radius: 6px;
+border-radius: 6px;
+-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-o-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-ms-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.move:hover{
+ box-shadow: 2px 2px 5px 10px rgba(160, 142, 128, 1) inset, 1px 1px 4px 5px rgba(22, 22, 22, 0.47);
+    cursor: pointer;
+    -webkit-transition:all 0.5s ease-in;
+    -mz-transition:all 0.5s ease-in;
+    -o-transition:all 0.5s ease-in;
+    -ms-transition:all 0.5s ease-in;
+    transition:all 0.5s ease-in;
+}
+.move{
+    -webkit-transition:all 0.5s ease-in;
+    -mz-transition:all 0.5s ease-in;
+    -o-transition:all 0.5s ease-in;
+    -ms-transition:all 0.5s ease-in;
+    transition:all 0.5s ease-in;
+}
 </style>
 </head>
 <body>
@@ -174,6 +208,8 @@ transition:all 0.3s ease-out;
 		</div>
 	</div>
 </div>
+<script src="jquery.myAlert.js"></script>
+<script src="jquery.moveAble.js"></script>
 <script>
 $(".reply").click(function(){
 	if($(this).parent().find("div").length){
@@ -194,7 +230,12 @@ $(".reply").click(function(){
 				var content=$("#content").val().trim();
 				var name=$("#name").val().trim();
 				if(content==""||name==""){
-					alert("name or content is empty!");
+					//alert("name or content is empty!");
+					$("body").myAlert({
+						title:"alert",
+						content:'I am sorry ,but name or content is empty! ......<span class="icon-sad"></span>...'
+					})
+					 $("#move_handle").moveAble({divId:"alert_div"})
 					return false;
 				}else{
 					$("#submit").click();
@@ -206,7 +247,11 @@ $(".reply").click(function(){
 			var content=$("#content").val().trim();
 			var name=$("#name").val().trim();
 			if(content==""||name==""){
-				alert("name or content is empty!");
+					$("body").myAlert({
+						title:"alert",
+						content:'I am sorry ,but name or content is empty! ......<span class="icon-sad"></span>...'
+					})
+					 $("#move_handle").moveAble({divId:"alert_div"})
 				e.preventDefault();
 				return false;
 			}else{
@@ -223,7 +268,11 @@ $("#add_submit").click(function(e){
 	var content=$("#add_content").val().trim();
 	if(name==""||content==""){
 		e.preventDefault();
-		alert("name or content is empty!");
+					$("body").myAlert({
+						title:"alert",
+						content:'I am sorry ,but name or content is empty! ......<span class="icon-sad"></span>...'
+					})
+					 $("#move_handle").moveAble({divId:"alert_div"})
 		return false;
 	}
 })
@@ -240,7 +289,11 @@ $("#add_form").on("keydown",function(event){
 				var content=$("#add_content").val().trim();
 				var name=$("#add_name").val().trim();
 				if(content==""||name==""){
-					alert("name or content is empty!");
+					$("body").myAlert({
+						title:"alert",
+						content:'I am sorry ,but name or content is empty! ......<span class="icon-sad"></span>...'
+					})
+					 $("#move_handle").moveAble({divId:"alert_div"})
 					return false;
 				}else{
 					$("#add_submit").click();
