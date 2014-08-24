@@ -1,0 +1,40 @@
+<% include header.ejs %>
+<link rel="stylesheet" href="/stylesheets/history.css" />
+</head>
+<body>
+	<div class="container">
+		<h1  id="title"><a href="/history">history page</a></h1>
+		<table class="table table-hover table-bordered">
+			<tr>
+				<th>from</th>
+				<th>to</th>
+				<th>message</th>
+				<th>date</th>
+			</tr>
+			<tr>
+				<th><form method='get' actioin='/history' ><input type="text" name="f" class="form-control" placeholder="press ENTER to find out" /><input class="hidden" type='submit' value='submit' /></form></th>
+				<th><form method='get' actioin='/history' ><input type="text" name="t" class="form-control"  placeholder="press ENTER to find out" /><input class="hidden" type='submit' value='submit' /></form></th>
+				<th><form method='get' actioin='/history' ><input type="text" name="message" class="form-control"  placeholder="press ENTER to find out" /><input class="hidden" type='submit' value='submit' /></form></th>
+				<th><form method='get' actioin='/history' ><input type="text" name="d" class="form-control"  placeholder="press ENTER to find out" /><input class="hidden" type='submit' value='submit' /></form></th>
+			</tr>
+			<% rows.forEach(function(row){ %>
+				<tr>
+					<td><%= row.f %></td>
+					<td><%= row.t %></td>
+					<td><%=row.message %></td>
+					<td><%=row.d %></td>
+				</tr>
+			<% }) %>
+		</table>
+		<div id="page_div">
+			<ul class="pagination">
+				<li><a href="#">&laquo;</a></li>
+				<% pages.forEach(function(page){ %>
+					<li <%= (page+1)==pageNow?"class=active":" " %>><a href="/history?page=<%= page+1 %>"><%= page+1 %></a></li>
+				<% }) %>
+				 <li><a href="#">&raquo;</a></li>
+			</ul>
+		</div>
+	</div>
+<script src="/javascripts/scroll.js"></script>
+<% include footer.ejs %>

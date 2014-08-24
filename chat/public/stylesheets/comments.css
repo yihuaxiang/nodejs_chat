@@ -1,0 +1,146 @@
+#title{
+	text-align:center;
+}
+#title a:hover{
+	text-decoration:none;
+}
+.hidden{
+	display:none;
+}
+td,tr{
+	word-break:break-all;
+	max-height:100px;
+	overflow:hidden;
+}
+td:nth-child(1){
+	width:6%;
+}
+td:nth-child(2),td:nth-child(4){
+	width:14%;
+}
+td:nth-child(3){
+	width:29.5%;
+}
+td:nth-child(5){
+	width:15%;
+}
+#form{
+	position:absolute;
+	padding:4px 9px;
+background: #f3fcff;
+padding: 9px 14px;
+font-family: 微软雅黑;
+border: 1px solid rgba(0,0,0,.2);
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+-o-border-radius: 6px;
+-ms-border-radius: 6px;
+border-radius: 6px;
+-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-o-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-ms-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+#page_div{
+	text-align:center;
+}
+#add_message{
+	position:fixed;
+	top:40px;
+	left:40px;
+	display:inline-block;
+	width:30px;
+	height:30px;
+	cursor:pointer;
+	text-align:center;
+}
+#add_form{
+	position:absolute;
+	padding:4px 9px;
+	width:300px;
+	height:208px;
+background: #f3fcff;
+padding: 9px 14px;
+font-family: 微软雅黑;
+border: 1px solid rgba(0,0,0,.2);
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+-o-border-radius: 6px;
+-ms-border-radius: 6px;
+border-radius: 6px;
+-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-o-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-ms-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+box-shadow: 0 5px 10px rgba(0,0,0,.2);
+
+overflow:hidden;
+
+-webkit-transition:all 0.3s ease-out;
+-moz-transition:all 0.3s ease-out;
+-o-transition:all 0.3s ease-out;
+-ms-transition:all 0.3s ease-out;
+transition:all 0.3s ease-out;
+}
+#add_form.width_height_0{
+-webkit-transition:all 0.3s ease-out;
+-moz-transition:all 0.3s ease-out;
+-o-transition:all 0.3s ease-out;
+-ms-transition:all 0.3s ease-out;
+transition:all 0.3s ease-out;
+
+	width:0px;
+	height:0px;
+	padding:0px;
+}
+#pen{
+	display:block;
+	width:100%;
+	height:100%;
+}
+#add_form textarea{
+	height:80px;
+}
+.left{
+	float:left;
+	width:49%;
+}
+.right{
+	float:right;
+	width:49%;
+}
+
+.shadow_box{
+background: #f3fcff;
+padding: 9px 14px;
+font-family: 微软雅黑;
+border: 1px solid rgba(0,0,0,.2);
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+-o-border-radius: 6px;
+-ms-border-radius: 6px;
+border-radius: 6px;
+-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-o-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-ms-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.move:hover{
+ box-shadow: 2px 2px 5px 10px rgba(160, 142, 128, 1) inset, 1px 1px 4px 5px rgba(22, 22, 22, 0.47);
+    cursor: pointer;
+    -webkit-transition:all 0.5s ease-in;
+    -mz-transition:all 0.5s ease-in;
+    -o-transition:all 0.5s ease-in;
+    -ms-transition:all 0.5s ease-in;
+    transition:all 0.5s ease-in;
+}
+.move{
+    -webkit-transition:all 0.5s ease-in;
+    -mz-transition:all 0.5s ease-in;
+    -o-transition:all 0.5s ease-in;
+    -ms-transition:all 0.5s ease-in;
+    transition:all 0.5s ease-in;
+}

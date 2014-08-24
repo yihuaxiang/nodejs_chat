@@ -1,0 +1,160 @@
+*{
+	font-family:微软雅黑,verdana;
+}
+html,body{
+	padding:0px;
+	margin:0px;
+}
+*{
+	color:white;
+}
+#main .disable{
+	color:grey;
+	cursor:default;
+}
+.clear_after:after{
+	content:" ";
+	clear:both;
+	display:block;
+	height:5px;
+}
+#main{
+	margin:50px auto;
+	width:352px;
+}
+#one{
+	width:352px;
+	height:auto;
+	border-radius:10px;
+	background-color:rgb(85, 85, 85);
+}
+#two{
+	width:352px;
+	height:38px;
+	border-radius:10px;
+	background-color:rgb(85, 85, 85);
+	margin-top:9px;
+}
+#songsList{
+	width:352px;
+	height:200px;
+	background:rgb(85, 85, 85);
+	border-radius:10px;
+	margin-top:9px;
+}
+#songsList ul{
+	list-style-type: decimal;
+}
+#songsList li span:first-child{
+	display:inline-block;
+	width:250px;
+}
+#songsList li span:last-child{
+	cursor:pointer;
+}
+#songsList li span:last-child:active{
+	color:rgb(16, 228, 84);
+	cursor:pointer;
+}
+
+#content{
+	padding:10px;
+	padding-bottom:0px;
+}
+#content div{
+	display:inline-block;
+}
+#content .right{
+	float: right;
+	width: 222px;
+}
+#content ul{
+	padding-top: 0px;
+	margin-top: 0px;
+	list-style: none;
+	overflow: hidden;
+	padding-left: 10px;
+	margin-bottom:0px;
+}
+#content li{
+	line-height:25px;
+}
+#content li .icon-star{
+	position:relative;
+	top:3px;
+}
+#buttons div{
+	display:inline-block;
+	float:left;
+	cursor:pointer;
+}
+#buttons div.active{
+	border-radius: 10px;
+	background: rgb(105, 0, 0);
+	padding: 0px 5px;
+}
+#download{
+	line-height:30px;
+	margin-left:10px;
+	display:inline-block;
+	float:left;
+	text-decoration:none;
+}
+#shuffle,#loop,#volume{
+	line-height:30px;
+	margin-left:18px;
+}
+#volume span{
+	display:inline-block;
+	width:22px;
+	line-height:30px;
+}
+#volume span:active{
+	color:rgb(16, 228, 84);
+}
+#control,#process,#time{
+	display:inline-block;
+}
+#control{
+	line-height: 40px;
+	padding-left: 20px;
+}
+#control span{
+	cursor:pointer;
+	-webkit-transition:all 0.4s ease-in;
+	-mz-transition:all 0.4s ease-in;
+	-o-transition:all 0.4s ease-in;
+	-ms-transition:all 0.4s ease-in;
+	transition:all 0.4s ease-in;
+}
+#control span:hover{
+	color: rgb(16, 228, 84);
+	text-shadow: 1px 1px 2px rgba(123, 255, 12, 1);
+}
+#process{
+	cursor:pointer;
+}
+#process_back{
+	width: 130px;
+	height: 8px;
+	background: black;
+	border-radius: 10px;
+	position: relative;
+	top: -3px;
+	box-shadow: 2px 2px 4px rgba(33, 33, 33, 0.97),0px 0px 0px 1px rgba(255,255,255,0.2);
+}
+#process_forward{
+	width: 10px;
+	height: 100%;
+	background-color: rgb(138, 247, 0);
+	border-radius: 10px;
+	box-shadow: -2px -1px 4px 1px rgba(255,0,0,0.3) inset;
+}
+#time{
+	line-height:40px;
+	position:relative;
+	top:-1px;
+}
+.shine{
+	color:rgb(138, 247, 0);
+}

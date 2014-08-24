@@ -1,0 +1,68 @@
+<% include header.ejs %>
+<link rel="stylesheet" href="/stylesheets/comments.css" />
+</head>
+<body>
+	<div class="container">
+		<h1  id="title"><a href="/comments">write page</a></h1>
+			<table class="table table-hover table-bordered">	
+				<tr>
+					<th>index</th>
+					<th>name</th>
+					<th>content</th>
+					<th>to</th>
+					<th>about</th>
+					<th>date</th>
+					<th>handle</th>
+				</tr>
+				<% comments.forEach(function(comment){ %>
+					<tr>
+						<td><%= comment.id %></td>
+						<td class="name"><%= comment.name %></td>
+						<td class="content"><%= comment.content %></td>
+						<td><%= comment.t %></td>
+						<td><%= comment.about %></td>
+						<td><%= comment.d %></td>
+						<td class="" style="position:;">
+							<button type="button" class="reply btn btn-success">Reply</button>
+						</td>
+					</tr>
+				<% }) %>
+
+
+			</table>
+
+	<hr />
+	<div id="page_div">
+		<ul class="pagination">
+			<li><a href="#">&laquo;</a></li>
+			<% pages.forEach(function(page){ %>
+				<li <%= (page+1)==pageNow?"class=active":" " %> ><a href="/comments?page=<%= page+1 %>"><%= page+1 %></a></li>
+			<% }) %>
+			 <li><a href="#">&raquo;</a></li>
+		</ul>
+	</div>
+	<div id="add_message">
+		<span id="pen" class="glyphicon glyphicon-pencil"> </span>
+		<div id="add_form" class="width_height_0">
+			<form id="add_message_form" class="" method="post" >
+				<input id="add_name" name="name" class="form-control" placeholder="name" />
+				<br />
+				<textarea id="add_content" name="content" class="form-control" placeholder="message"></textarea>
+				<br />
+				<div>
+					<div class="left">
+						<input type="button" value="cancel" id="cancel" class="form-control" />
+					</div>
+					<div class="right">
+						<input type="submit" value="submit" id="add_submit" class="form-control" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script src="/javascripts/jquery.myAlert.js"></script>
+<script src="/javascripts/jquery.moveAble.js"></script>
+<script src="/javascripts/comments.js"></script>
+<script src="/javascripts/scroll.js"></script>
+<% include footer.ejs %>

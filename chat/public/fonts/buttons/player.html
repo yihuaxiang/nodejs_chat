@@ -1,0 +1,397 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="./fonts/style.css" />
+<style>
+html,body{
+	padding:0px;
+	margin:0px;
+}
+*{
+	color:white;
+}
+#main .disable{
+	color:grey;
+	cursor:default;
+}
+.clear_after:after{
+	content:" ";
+	clear:both;
+	display:block;
+	height:5px;
+}
+#main{
+	margin:50px auto;
+	width:352px;
+}
+#one{
+	width:352px;
+	height:auto;
+	border-radius:10px;
+	background-color:rgb(85, 85, 85);
+}
+#two{
+	width:352px;
+	height:38px;
+	border-radius:10px;
+	background-color:rgb(85, 85, 85);
+	margin-top:9px;
+}
+#content{
+	padding:10px;
+}
+#content div{
+	display:inline-block;
+}
+#content .right{
+	float: right;
+	width: 227px;
+}
+#content ul{
+	padding-top: 0px;
+	margin-top: 0px;
+	list-style: none;
+	overflow: hidden;
+	padding-left: 10px;
+}
+#content li{
+	line-height:25px;
+}
+#content li .icon-star{
+	position:relative;
+	top:3px;
+}
+#buttons div{
+	display:inline-block;
+	float:left;
+	cursor:pointer;
+}
+#buttons div.active{
+	border-radius: 10px;
+	background: rgb(105, 0, 0);
+	padding: 0px 5px;
+}
+#download{
+	line-height:30px;
+	margin-left:10px;
+}
+#shuffle,#loop,#volume{
+	line-height:30px;
+	margin-left:25px;
+}
+#volume span{
+	display:inline-block;
+	width:22px;
+	line-height:30px;
+}
+#volume span:active{
+	color:rgb(16, 228, 84);
+}
+#control,#process,#time{
+	display:inline-block;
+}
+#control{
+	line-height: 40px;
+	padding-left: 20px;
+}
+#control span{
+	cursor:pointer;
+	-webkit-transition:all 0.4s ease-in;
+	-mz-transition:all 0.4s ease-in;
+	-o-transition:all 0.4s ease-in;
+	-ms-transition:all 0.4s ease-in;
+	transition:all 0.4s ease-in;
+}
+#control span:hover{
+	color: rgb(16, 228, 84);
+	text-shadow: 1px 1px 2px rgba(123, 255, 12, 1);
+}
+#process{
+	cursor:pointer;
+}
+#process_back{
+	width: 154px;
+	height: 8px;
+	background: black;
+	border-radius: 10px;
+	position: relative;
+	top: -3px;
+	box-shadow: 2px 2px 4px rgba(33, 33, 33, 0.97),0px 0px 0px 1px rgba(255,255,255,0.2);
+}
+#process_forward{
+	width: 10px;
+	height: 100%;
+	background-color: rgb(138, 247, 0);
+	border-radius: 10px;
+	box-shadow: -2px -1px 4px 1px rgba(255,0,0,0.3) inset;
+}
+#time{
+	line-height:40px;
+	position:relative;
+	top:-1px;
+}
+.shine{
+	color:rgb(138, 247, 0);
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+$(function(){
+	var songs=new Array();
+	for(var i=1;i<19;i++){
+		var obj={};
+		obj.src=i+".mp3";
+		obj.song="null";
+		obj.by="null";
+		obj.album="null";
+
+		//songs.push(i+".mp3");
+		songs.push(obj);
+	}
+	var cu=0;
+	cu=Math.floor(Math.random()*songs.length);
+	var volume=1;
+
+	var playing=false;
+	var audio=document.getElementById("audio");
+	$("#play-pause").click(function(){
+		//alert("go");
+		if(!playing){
+			audio.play();
+			playing=true;
+			$("#play-pause").removeClass("icon-play").addClass("icon-pause");
+			var string=audio.duration;
+			var index=String(string).indexOf(".");
+			if(index==-1){
+
+			}else{
+				string=String(string).substr(0,index);
+			}
+			string=toTime(string);
+			if(String(string)=="NaN"){
+				string="00:00";
+			}
+			//alert("string");
+			//alert("two");
+			$("#allTime").text(string);
+		}else{
+			audio.pause();
+			playing=false;
+			$("#play-pause").removeClass("icon-pause").addClass("icon-play");
+		}
+	})
+	$("#stop").click(function(){
+		audio.pause();
+		playing=false;
+		$("#play-pause").removeClass("icon-pause").addClass("icon-play");
+		$("#process_forward").css("width","10px");
+		$("#nowTime").text("00:00");
+		audio.src="./"+songs[cu].src;
+			$("#song").text(songs[cu].song);
+			$("#by").text(songs[cu].by);
+			$("#album").text(songs[cu].album);
+		audio.load();
+	})
+	$("#left").click(function(){
+		audio.pause();
+		cu++;
+		if(cu==songs.length){
+			cu=0;
+		}
+		//alert(cu);
+		audio.src="./"+songs[cu].src;
+			$("#song").text(songs[cu].song);
+			$("#by").text(songs[cu].by);
+			$("#album").text(songs[cu].album);
+		audio.load();
+		playing=true;
+		$("#process_forward").css("width","10px");
+		$("#nowTime").text("00:00");
+		$("#allTime").text("00:00");
+		audio.play();
+	})
+	$("#right").click(function(){
+		audio.pause();
+		cu--;
+		if(cu==-1){
+			cu=songs.length-1;
+		}
+		//alert(cu);
+		audio.src="./"+songs[cu].src;
+			$("#song").text(songs[cu].song);
+			$("#by").text(songs[cu].by);
+			$("#album").text(songs[cu].album);
+		//alert(audio.src);
+		audio.load();
+		playing=true;
+		$("#process_forward").css("width","10px");
+		$("#nowTime").text("00:00");
+		$("#allTime").text("00:00");
+		audio.play();
+	})
+	$("#process_back").click(function(event){
+		var width=event.pageX-$("#process_back").offset().left;
+		console.log(width);
+		audio.currentTime=audio.duration*width/$("#process_back").width();
+		$("#process_forward").css("width",width+"px");
+
+	})
+	audio.ontimeupdate=function(){
+		var string=audio.currentTime;
+		var index=String(string).indexOf(".");
+		if(index==-1){
+
+		}else{
+			string=String(string).substr(0,index);
+		}
+		string=toTime(string);
+		$("#nowTime").text(string);
+		var string=audio.duration;
+		var index=String(string).indexOf(".");
+		if(index==-1){
+
+		}else{
+			string=String(string).substr(0,index);
+		}
+		string=toTime(string);
+		if(String(string)=="NaN"){
+			string="00:00";
+		}
+		//alert(string);
+		console.log(string);
+		//alert("one");
+		$("#allTime").text(string);
+		var $width=Number(audio.currentTime)/Number(audio.duration)*Number($("#process_back").width());
+		$("#process_forward").css("width",$width+"px");
+	}
+	audio.onended=function(){
+		if($("#shuffle").hasClass("active")){
+			var cu=Math.floor(Math.random()*songs.length);
+		audio.src="./"+songs[cu].src;
+			$("#song").text(songs[cu].song);
+			$("#by").text(songs[cu].by);
+			$("#album").text(songs[cu].album);
+			audio.load();
+			audio.play();
+
+		}else if($('#loop').hasClass("active")){
+		//audio.src="./"+songs[cu].src;
+			//$("#song").text(songs[cu].song);
+			//$("#by").text(songs[cu].by);
+			//$("#album").text(songs[cu].album);
+			audio.load();
+			audio.play();
+		}else{
+
+		}
+	}
+
+	$("#loop").click(function(){
+		if($("#loop").hasClass("active")){
+			$("#loop").removeClass("active");
+		}else{
+			$("#shuffle").removeClass("active");
+			$("#loop").addClass("active");
+		}
+	})
+
+	$("#shuffle").click(function(){
+		if($("#shuffle").hasClass("active")){
+			$("#shuffle").removeClass("active");
+		}else{
+			$("#shuffle").addClass("active");
+			$("#loop").removeClass("active");
+		}
+	})
+	$(".icon-volume-decrease").click(function(){
+		$(".icon-volume-increase").removeClass("disable");
+		var vol=audio.volume;
+		if(vol>0.1){
+			vol=vol-0.1;
+		}else{
+			vol=0;
+			$(".icon-volume-decrease").addClass("disable");
+		}
+		audio.volume=vol;
+	})
+	$(".icon-volume-increase").click(function(){
+		$(".icon-volume-decrease").removeClass("disable");
+		var vol=audio.volume;
+		if(vol<0.9){
+			vol=vol+0.1;
+		}else{
+			vol=1;
+			$(".icon-volume-increase").addClass("disable");
+		}
+		audio.volume=vol;
+	})
+	
+	function toTime(num){
+		num=Number(num);
+		var min=num/60;
+		min=Math.floor(min);
+		if(min<10){
+			min="0"+String(min);
+		}
+		var sec=num%60;
+		if(sec<10){
+			sec="0"+String(sec);
+		}
+		var timeString=min+":"+sec;
+		return timeString;
+	}
+
+})
+</script>
+</head>
+<body>
+<audio id="audio" src="./1.mp3"  style="display:none"></audio>
+<div id="main">
+	<div id="one">
+		<div id="content">
+			<div class="left">
+				<img src="./music.jpg" width=100 height=100 title='my music' />
+			</div>
+			<div class="right">
+				<ul>
+					<li><span>song : </span><span id="song">风吹麦浪</span></li>
+					<li><span>by : </span><span id="by">孙俪李健</span></li>
+					<li><span>album : </span><span id="album">想念你</span></li>
+					<li><span>rating : </span><span class="icon-star shine"></span><span class="icon-star shine"></span><span class="icon-star shine"></span><span class="icon-star shine"></span><span class="icon-star"></span></li>
+				</ul>
+			</div>
+		</div>
+		<div id="buttons" class="clear_after">
+			<div id="download">
+				Download <span class="icon-plus"></span>
+			</div>
+			<div id="shuffle" class="active">
+				shuffle <span class="icon-shuffle"></span>
+			</div>
+			<div id="loop">
+				loop <span class="icon-loop"></span>
+			</div>
+			<div id="volume">
+				<span class="icon-volume-decrease"></span><span class="icon-volume-increase"></span>
+			</div>
+		</div>
+	</div>
+	<div id="two">
+		<div id="control">
+			<span id="left" class="icon-backward"></span>
+			<span id="play-pause" class="icon-play"></span>
+			<span id="stop" class="icon-stop"></span>
+			<span id="right" class="icon-forward"></span>
+		</div>
+		<div id="process">
+			<div id="process_back">
+				<div id="process_forward"></div>
+			</div>
+		</div>
+		<div id="time">
+			<span id="nowTime">00:00</span>/<span id="allTime">00:00</span>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,252 @@
+html,body{
+	width:100%;
+	height:100%;
+	padding:0px;
+	margin:0px;
+}
+*{
+	font-family: 微软雅黑 "Times New Roman", Times, serif;
+}
+body{
+	min-height:600px;
+	width:1000px;
+	position:relative;
+	margin:0px auto;
+}
+html body{
+	margin-left:auto;
+	margin-right:auto;
+}
+#main .user_oneline{
+	-webkit-transition:all 1s ease-in;
+	-moz-transition:all 1s ease-in;
+	-o-transition:all 1s ease-in;
+	-ms-transition:all 1s ease-in;
+	transition:all 1s ease-in;
+	color:white;
+	width:85px;
+
+
+
+	-webkit-transition:left 0.6s ease-out;
+	-moz-transition:left 0.6s ease-out;
+	-o-transition:left 0.6s ease-out;
+	-ms-transition:left 0.6s ease-out;
+	transition:left 0.6s ease-out;
+}
+#main .typing{
+	-webkit-transition:all 1s ease-in;
+	-moz-transition:all 1s ease-in;
+	-o-transition:all 1s ease-in;
+	-ms-transition:all 1s ease-in;
+	transition:all 1s ease-in;
+	color:red;
+	-webkit-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+	-o-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-name: shake;
+	-moz-animation-name: shake;
+	-o-animation-name: shake;
+	animation-name: shake
+
+	 -webkit-animation-iteration-count: infinite;/*定义循环资料，infinite为无限次*/
+	 -moz-animation-iteration-count: infinite;/*定义循环资料，infinite为无限次*/
+	 -o-animation-iteration-count: infinite;/*定义循环资料，infinite为无限次*/
+	 animation-iteration-count: infinite;/*定义循环资料，infinite为无限次*/
+}
+.width100{
+	width:100%;
+}
+.float-left{
+	float:left;
+}
+.float-right{
+	float:right;
+}
+.clear_after:after{
+	content:"";
+	clear:both;
+	display:block;
+}
+#main{
+	height:81%;
+}
+#main,#input{
+	width:100%;
+}
+#chat_show,#chat_online{
+	height:100%;
+	border:1px grey solid;
+	border-radius:10px;
+	padding-bottom:200px;
+	over-flow:scroll;
+}
+#chat_online{
+	overflow-x:hidden;
+}
+#chat_show{
+	padding:10px;
+	overflow-y:scroll;
+}
+#chat_show div p{
+	background:#f3fcff;
+	padding: 9px 14px;
+	font-family: 微软雅黑;
+	border: 1px solid rgba(0,0,0,.2);
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-o-border-radius: 6px;
+	-ms-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+	-o-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+	-ms-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+	box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+#chat_show p{
+	position:relative;
+}
+#chat_show div.float-left p::after{
+	content:"";
+	width:10px;
+	height:10px;
+	left:-19px;
+	border:10px #f3fcff solid;
+	border-top-color:rgba(0,0,0,0);
+	border-left-color:rgba(0,0,0,0);
+	border-bottom-color:rgba(0,0,0,0);
+	position:absolute;
+}
+#chat_show div.float-left p::before{
+	content:"";
+	width:10px;
+	height:10px;
+	left:-20px;
+	border:10px rgba(0,0,0,.2) solid;
+	border-top-color:rgba(0,0,0,0);
+	border-left-color:rgba(0,0,0,0);
+	border-bottom-color:rgba(0,0,0,0);
+	position:absolute;
+}
+#chat_show div.float-right p::after{
+	content:"";
+	width:10px;
+	height:10px;
+	right:-19px;
+	border:10px #f3fcff solid;
+	border-top-color:rgba(0,0,0,0);
+	border-right-color:rgba(0,0,0,0);
+	border-bottom-color:rgba(0,0,0,0);
+	position:absolute;
+}
+#chat_show div.float-right p::before{
+	content:"";
+	width:10px;
+	height:10px;
+	right:-20px;
+	border:10px rgba(0,0,0,.2) solid;
+	border-top-color:rgba(0,0,0,0);
+	border-right-color:rgba(0,0,0,0);
+	border-bottom-color:rgba(0,0,0,0);
+	position:absolute;
+}
+
+#input{
+	position:absolute;
+	bottom:0px;
+}
+.float-left p,.float-right p{
+	font-size:25px;
+}
+
+#right{
+	position:fixed;
+	right:40px;
+	width:100px;
+	height:220px;
+	top:50%;
+}
+#right ul{
+	position:relative;
+	top:-50%;
+	list-style:none;
+}
+#right ul li{
+	float:left;
+	margin-top:3px;
+	list-style:none;
+}
+#right ul li a{
+	width:75px;
+}
+
+#chat_online dd{
+	margin-top:3px;
+	position:relative;
+}
+#chat_online dl{
+	margin-top:10px;
+}
+
+@-webkit-keyframes shake {
+	0%, 100% {-webkit-transform: translatex(0);}
+	10%, 30%, 50%, 70%, 90% {-webkit-transform: translatex(-5px);}
+	20%, 40%, 60%, 80% {-webkit-transform: translatex(5px);}
+}
+
+@-moz-keyframes shake {
+	0%, 100% {-moz-transform: translatex(0);}
+	10%, 30%, 50%, 70%, 90% {-moz-transform: translatex(-5px);}
+	20%, 40%, 60%, 80% {-moz-transform: translatex(5px);}
+}
+
+@-o-keyframes shake {
+	0%, 100% {-o-transform: translatex(0);}
+	10%, 30%, 50%, 70%, 90% {-o-transform: translatex(-5px);}
+	20%, 40%, 60%, 80% {-o-transform: translatex(5px);}
+}
+
+@keyframes shake {
+	0%, 100% {transform: translatex(0);}
+	10%, 30%, 50%, 70%, 90% {transform: translatex(-5px);}
+	20%, 40%, 60%, 80% {transform: translatex(5px);}
+}
+
+
+
+
+.shadow_box{
+background: #f3fcff;
+padding: 9px 14px;
+font-family: 微软雅黑;
+border: 1px solid rgba(0,0,0,.2);
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+-o-border-radius: 6px;
+-ms-border-radius: 6px;
+border-radius: 6px;
+-webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-o-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+-ms-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.move:hover{
+ box-shadow: 2px 2px 5px 10px rgba(160, 142, 128, 1) inset, 1px 1px 4px 5px rgba(22, 22, 22, 0.47);
+    cursor: pointer;
+    -webkit-transition:all 0.5s ease-in;
+    -mz-transition:all 0.5s ease-in;
+    -o-transition:all 0.5s ease-in;
+    -ms-transition:all 0.5s ease-in;
+    transition:all 0.5s ease-in;
+}
+.move{
+    -webkit-transition:all 0.5s ease-in;
+    -mz-transition:all 0.5s ease-in;
+    -o-transition:all 0.5s ease-in;
+    -ms-transition:all 0.5s ease-in;
+    transition:all 0.5s ease-in;
+}
