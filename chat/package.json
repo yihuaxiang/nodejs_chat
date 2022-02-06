@@ -8,8 +8,9 @@
   "dependencies": {
     "express": "3.16.3",
     "ejs": "*",
-    "cookie-parser":"*",
-    "body-parser":"*",
-    "mysql":"*"
+    "cookie-parser": "*",
+    "body-parser": "*",
+    "mysql": "*",
+    "socket.io": "^1.0.0"
   }
 }
