@@ -11,16 +11,16 @@ $("#enter").click(function(){
 
 $('*').popover();
 
-$("#chat_show").niceScroll({cursorborder:"",cursorcolor:"#00F",boxzoom:false}); 
-$("#chat_online").niceScroll({cursorborder:"",cursorcolor:"#00F",boxzoom:false}); 
+$("#chat_show").niceScroll({cursorborder:"",cursorcolor:"#00F",boxzoom:false});
+$("#chat_online").niceScroll({cursorborder:"",cursorcolor:"#00F",boxzoom:false});
 
 
 
-window.onbeforeunload = function() {   
+window.onbeforeunload = function() {
 
    return "Are you sure to leave now ?";
 
-} 
+}
 
 
 var first_time=true;
@@ -28,7 +28,7 @@ var time_out;
 var time_out1;
 var title_time_out;
 var myName="";
-var socket=io("http://localhost");
+var socket=io("http://localhost:8801");
 
 //on
 socket.on("welcome",function(data){
@@ -73,7 +73,7 @@ socket.on("all",function(data){
 })
 
 socket.on("all_done",function(data){
-	
+
 	$("#enter").text("发送");
 
 	var $div;
@@ -82,7 +82,7 @@ socket.on("all_done",function(data){
 
 	$("#chat_show").append($div);
 	$("#chat_show").scrollTop(111111);
-		
+
 })
 
 socket.on("private",function(data){
@@ -102,7 +102,7 @@ socket.on("typing",function(data){
 			console.log($(this));
 			clearTimeout(time_out1);
 			$(this).addClass("typing");
-			
+
 			time_out1=setTimeout(function(name){
 				//$(this).removeClass("typing");
 				socket.emit("stop typing",{});
@@ -150,7 +150,7 @@ function updateOnline(usernames){
 			i++;
 			if(key==myName){
 
-			}else{	
+			}else{
 				$select_users.append($("<option>"+key+"</options>"));
 			}
 		}
@@ -160,10 +160,10 @@ function updateOnline(usernames){
 			i++;
 			if(key==myName){
 
-			}else{	
+			}else{
 				$select_users.append($("<option>"+key+"</options>"));
 			}
-		}	
+		}
 	}
 
 	$("#chat_online").html($users_dl);
@@ -197,7 +197,7 @@ function sendMessage(){
 				})
 				$("#input_emit_box").val("");
 				//alert($("#input_emit_box").val());
-		//}	
+		//}
 			}else{
 				//alert("Nothing Input,Sorry!");
 				//myAlert('alert!','I am sorry ,but you input nothing to the input box ......<span class="icon-sad"></span>...');
@@ -259,7 +259,7 @@ function dataToDiv(data,isToMe,direction){
 			$h2.text(data.from);
 		}
 	}
-	
+
 
 	$one.append($h2);
 	$div.append($one);
