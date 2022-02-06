@@ -28,7 +28,7 @@ exports.history=function(req,res){
 		}else{
 			var sql="select * from history limit "+((page-1)*100)+",100";
 		}
-		
+
 		console.log(sql);
 
 		var sql1="select * from history";
@@ -49,7 +49,7 @@ exports.history=function(req,res){
 		}else{
 			var sql="select * from history limit "+((page-1)*100)+",100";
 		}
-		
+
 		console.log(sql);
 
 		var sql1="select * from history";
@@ -69,7 +69,7 @@ exports.history=function(req,res){
 		}else{
 			var sql="select * from history limit "+((page-1)*100)+",100";
 		}
-		
+
 		console.log(sql);
 
 		var sql1="select * from history";
@@ -89,7 +89,7 @@ exports.history=function(req,res){
 		}else{
 			var sql="select * from history limit "+((page-1)*100)+",100";
 		}
-		
+
 		console.log(sql);
 
 		var sql1="select * from history";
@@ -119,7 +119,7 @@ exports.history=function(req,res){
 
 		connection.query(sql,function(err,rows,fields){
 			if(err) throw err;
-		
+
 			res.render("history",{
 				rows:rows,
 				pages:pages,
@@ -148,7 +148,7 @@ exports.comments=function(req,res){
 		if(err){
 			res.end(err);
 		}else{
-			
+
 			for(var i=0;i<=rows.length/10;i++){
 				pages.push(i);
 			}
@@ -196,7 +196,7 @@ exports.history=function(req,res){
 		}else{
 			var sql="select * from history limit "+((page-1)*100)+",100";
 		}
-		
+
 		console.log(sql);
 
 		var sql1="select * from history";
@@ -217,7 +217,7 @@ exports.history=function(req,res){
 		}else{
 			var sql="select * from history limit "+((page-1)*100)+",100";
 		}
-		
+
 		console.log(sql);
 
 		var sql1="select * from history";
@@ -237,7 +237,7 @@ exports.history=function(req,res){
 		}else{
 			var sql="select * from history limit "+((page-1)*100)+",100";
 		}
-		
+
 		console.log(sql);
 
 		var sql1="select * from history";
@@ -257,7 +257,7 @@ exports.history=function(req,res){
 		}else{
 			var sql="select * from history limit "+((page-1)*100)+",100";
 		}
-		
+
 		console.log(sql);
 
 		var sql1="select * from history";
@@ -288,7 +288,7 @@ exports.history=function(req,res){
 
 		connection.query(sql,function(err,rows,fields){
 			if(err) throw err;
-		
+
 			res.render("history",{
 				rows:rows,
 				pages:pages,
@@ -311,7 +311,7 @@ exports.postComments=function(req,res){
 		tName:null,
 		tContent:null,
 		d:null
-	}	
+	}
 
 	for(var key in comment){
 		if(req.body[key]){
@@ -334,7 +334,7 @@ exports.postComments=function(req,res){
 }
 
 exports.player=function(req,res){
-	connection.query("use songs",function(err,rows,fields){
+	connection.query("use node_chart",function(err,rows,fields){
 		if(err){
 			console.log(err);
 			res.end("500,sorry");
