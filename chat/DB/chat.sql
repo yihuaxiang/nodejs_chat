@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `history` (
   `f` varchar(20) NOT NULL,
   `t` varchar(20) DEFAULT NULL,
   `message` text,
-  `d` varchar(50) DEFAULT NULL,
+  `d` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=420 ;
 
