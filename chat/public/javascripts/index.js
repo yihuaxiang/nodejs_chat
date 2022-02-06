@@ -28,7 +28,7 @@ var time_out;
 var time_out1;
 var title_time_out;
 var myName="";
-var socket=io("http://localhost:8801");
+var socket=io(`${location.protocol}//${location.host}`);
 
 //on
 socket.on("welcome",function(data){
