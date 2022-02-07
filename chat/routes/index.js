@@ -1,4 +1,4 @@
-var connect_mysql=require("../node_modules/connect_mysql");
+var connect_mysql=require("../mysql/connect_mysql");
 var connection;
 connection=connect_mysql.connect(connection);
 /*

@@ -1,5 +1,5 @@
 //var sta=require("./static");
-var mime=require("./node_modules/mime").types;
+var mime=require("./config/mime").types;
 var express=require("express");
 var app=express();
 var fs=require("fs");
@@ -7,7 +7,7 @@ var path=require("path");
 var cookieParser=require("cookie-parser");
 var bodyParser=require("body-parser");
 
-var connect_mysql=require("./node_modules/connect_mysql");
+var connect_mysql=require("./mysql/connect_mysql");
 
 var server=require("http").createServer(app);
 var io=require("socket.io")(server);
