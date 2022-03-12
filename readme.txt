@@ -7,6 +7,6 @@ mysql/connect_mysql.js中修改数据库用户名密码
 npm install
 node app
 
-在线查看效果：http://121.40.94.152:8801
+在线查看效果： https://chat.weizeling.com/
 
-个人主页：http://121.40.94.152
+个人主页： https://fudongdong.com
