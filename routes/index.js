@@ -1,4 +1,6 @@
 var connect_mysql=require("../mysql/connect_mysql");
+const dayjs = require('dayjs');
+const lodash = require('lodash');
 var connection;
 connection=connect_mysql.connect(connection);
 /*
@@ -288,6 +290,10 @@ exports.history=function(req,res){
 
 		connection.query(sql,function(err,rows,fields){
 			if(err) throw err;
+
+			lodash.forEach(rows, row => {
+				row.d = dayjs(row.d).format('YYYY-MM-DD HH:mm:ss');
+			})
 
 			res.render("history",{
 				rows:rows,
