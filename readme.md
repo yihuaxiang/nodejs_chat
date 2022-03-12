@@ -1,5 +1,9 @@
 # 如何运行
 
+## 运行效果
+
+![](https://fudongdong-statics.oss-cn-beijing.aliyuncs.com/images/20220312/4f8388b46ddc4cfe8868b5b81cd0ad7f.png?x-oss-process=image/resize,w_800/quality,q_80)
+
 ## 修改配置
 
 1. `mysql/connect_mysql.js` 中修改数据库用户名密码
