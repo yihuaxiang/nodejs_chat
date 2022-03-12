@@ -271,7 +271,7 @@ exports.history = function (req, res) {
     if (!page) {
       page = 1;
     }
-    var sql = "select * from history limit " + ((page - 1) * 10) + ",100";
+    var sql = "select * from history limit " + ((page - 1) * 100) + ",100";
     console.log(sql);
 
     var sql1 = "select * from history";
