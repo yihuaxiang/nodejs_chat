@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "dev": "node app.js"
+    "dev": "node app.js",
+    "run": "pm2 start app"
   },
   "dependencies": {
     "body-parser": "^1.6.5",
