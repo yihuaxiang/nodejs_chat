@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "node app.js",
-    "run": "pm2 start app"
+    "run": "pm2 start app.js -f -i 1",
+    "stop": "pm2 stop all; pm2 kill"
   },
   "dependencies": {
     "body-parser": "^1.6.5",
