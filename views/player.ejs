@@ -1,80 +1,85 @@
 <!doctype html>
 <html>
 <head>
-<title>音乐</title>
-<link rel="stylesheet" href="/stylesheets/buttons-font.css" />
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<link rel="stylesheet" href="/stylesheets/player.css" />
-<script src="/javascripts/jquery-1.11.1.js"></script>
-<script src="/javascripts/jquery.nicescroll.min.js"></script>
-<script>
-	var songs=new Array();
-	<% songs.forEach(function(song){ %>
-		var one=new Object();
-		one.song="<%= song.song %>";
-		one.src="<%= song.name %>.mp3";
-		one.by="<%= song.by_ %>";
-		one.album="<%= song.album %>";
-		songs.push(one);
-	<% }) %>
-</script>
-<script src="/javascripts/player.js"></script>
+    <title>音乐</title>
+    <link rel="stylesheet" href="/stylesheets/buttons-font.css"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <link rel="stylesheet" href="/stylesheets/player.css"/>
+    <script src="/javascripts/jquery-1.11.1.js"></script>
+    <script src="/javascripts/jquery.nicescroll.min.js"></script>
+    <script>
+      var songs = new Array();
+      <% songs.forEach(function(song){ %>
+      var one = new Object();
+      one.song = "<%= song.song %>";
+      one.src = "<%= song.name %>.mp3";
+      one.by = "<%= song.by_ %>";
+      one.album = "<%= song.album %>";
+      songs.push(one);
+      <% }) %>
+    </script>
+    <script src="/javascripts/player.js"></script>
 </head>
 <body>
-<audio id="audio" src="/songs/<%= songs[0].name %>.mp3"  style="display:none"></audio>
+<audio id="audio" src="/songs/<%= songs[0].name %>.mp3" style="display:none"></audio>
 <div id="main">
-	<div id="one">
-		<div id="content" class="clear_after">
-			<div class="left">
-				<img src="/images/music.jpg" width=100 height=100 title='my music' />
-			</div>
-			<div class="right">
-				<ul>
-					<li><span>song : </span><span id="song"><%= songs[0].song %></span></li>
-					<li><span>by : </span><span id="by"><%= songs[0].by_ %></span></li>
-					<li><span>album : </span><span id="album"><%= songs[0].album %></span></li>
-					<li><span>rating : </span><span class="icon-star shine"></span><span class="icon-star shine"></span><span class="icon-star shine"></span><span class="icon-star shine"></span><span class="icon-star"></span></li>
-				</ul>
-			</div>
-		</div>
-		<div id="buttons" class="clear_after">
-			<a id="download" href="/download/1">
-				<span>Download</span> <span class="icon-plus"></span>
-			</a>
-			<div id="shuffle" class="active">
-				<span>shuffle</span> <span class="icon-shuffle"></span>
-			</div>
-			<div id="loop">
-				<span>loop</span> <span class="icon-loop"></span>
-			</div>
-			<div id="volume">
-				<span class="icon-volume-decrease"></span><span class="icon-volume-increase"></span>
-			</div>
-		</div>
-	</div>
-	<div id="two">
-		<div id="control">
-			<span id="left" class="icon-backward"></span>
-			<span id="play-pause" class="icon-play"></span>
-			<span id="stop" class="icon-stop"></span>
-			<span id="right" class="icon-forward"></span>
-		</div>
-		<div id="process">
-			<div id="process_back">
-				<div id="process_forward"></div>
-			</div>
-		</div>
-		<div id="time">
-			<span id="nowTime">00:00</span>/<span id="allTime">00:00</span>
-		</div>
-	</div>
-	<div id="songsList">
-		<ul>
-			<% songs.forEach(function(song){ %>
-				<li><sapn style="display:inline-block;width:240px;overflow:hidden;position:relative;top:4px;"><%= song.song %></sapn><span id="song<%= song.name %>" class="icon-volume-high"></span></li>
-			<% }) %>
-		</ul>
-	</div>
+    <div id="one">
+        <div id="content" class="clear_after">
+            <div class="left">
+                <img src="/images/music.jpg" width=100 height=100 title='my music'/>
+            </div>
+            <div class="right">
+                <ul>
+                    <li><span>song : </span><span id="song"><%= songs[0].song %></span></li>
+                    <li><span>by : </span><span id="by"><%= songs[0].by_ %></span></li>
+                    <li><span>album : </span><span id="album"><%= songs[0].album %></span></li>
+                    <li><span>rating : </span><span class="icon-star shine"></span><span class="icon-star shine"></span><span
+                                class="icon-star shine"></span><span class="icon-star shine"></span><span
+                                class="icon-star"></span></li>
+                </ul>
+            </div>
+        </div>
+        <div id="buttons" class="clear_after">
+            <a id="download" href="/download/1">
+                <span>Download</span> <span class="icon-plus"></span>
+            </a>
+            <div id="shuffle" class="active">
+                <span>shuffle</span> <span class="icon-shuffle"></span>
+            </div>
+            <div id="loop">
+                <span>loop</span> <span class="icon-loop"></span>
+            </div>
+            <div id="volume">
+                <span class="icon-volume-decrease"></span><span class="icon-volume-increase"></span>
+            </div>
+        </div>
+    </div>
+    <div id="two">
+        <div id="control">
+            <span id="left" class="icon-backward"></span>
+            <span id="play-pause" class="icon-play"></span>
+            <span id="stop" class="icon-stop"></span>
+            <span id="right" class="icon-forward"></span>
+        </div>
+        <div id="process">
+            <div id="process_back">
+                <div id="process_forward"></div>
+            </div>
+        </div>
+        <div id="time">
+            <span id="nowTime">00:00</span>/<span id="allTime">00:00</span>
+        </div>
+    </div>
+    <div id="songsList">
+        <ul>
+            <% songs.forEach(function(song){ %>
+                <li>
+                    <sapn style="display:inline-block;width:240px;overflow:hidden;position:relative;top:4px;"><%= song.song %></sapn>
+                    <span id="song<%= song.name %>" class="icon-volume-high"></span></li>
+            <% }) %>
+        </ul>
+    </div>
 </div>
 </body>
 </html>

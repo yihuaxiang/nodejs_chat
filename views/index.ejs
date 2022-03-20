@@ -1,131 +1,134 @@
 <% include header.ejs %>
-<link rel="stylesheet" href="/stylesheets/index.css" />
-<link rel="stylesheet" href="/stylesheets/faces-font.css" />
+<link rel="stylesheet" href="/stylesheets/index.css"/>
+<link rel="stylesheet" href="/stylesheets/faces-font.css"/>
 <script src="/socket.io/socket.io.js"></script>
 
 </head>
 <body>
-<div id="main" class="container" >
-	<div class="row">
-		<h2 id="title" class="text-center">chat for us</h2>
-	</div>
-	<div class="row">
-		<div  id="chat_show" class="col-xs-10">
+<div id="main" class="container">
+    <div class="row">
+        <h2 id="title" class="text-center">chat for us</h2>
+    </div>
+    <div class="row">
+        <div id="chat_show" class="col-xs-10">
 
-		</div>
-		<div id="chat_online" class="col-xs-2" style="overflow-y:scroll">
-			<dl id="users_dl">
-				<dt>在线用户</dt>
-				<dd class='btn btn-warning'>加载中...</dd>
-			</dl>
-		</div>
-	</div>
+        </div>
+        <div id="chat_online" class="col-xs-2" style="overflow-y:scroll">
+            <dl id="users_dl">
+                <dt>在线用户</dt>
+                <dd class='btn btn-warning'>加载中...</dd>
+            </dl>
+        </div>
+    </div>
 </div>
-<div id="input" class="container" >
-	<div class="row">
-		<div id="username" class="col-xs-3">
-			<div class="form-group">
-				<label class="col-xs-6 control-label" style="padding-top:7px;">用户名:</label>
-				<div class="col-xs-6">
-					<p id="your_name" class="form-control-static">fudongdong</p>
-				</div>
-			</div>
-		</div>
-		<div id="input_box" class="col-xs-5">
-			<div class="form-inline width100">
-				<div class="form-group width100">
-					<div class="input-group width100">
-						<div class="input-group-addon">
-							<input id="color" type="color" name="color" />
-						</div>
-						<input id="input_emit_box" class="form-control" type='text' placeholder="input here..." />
-						<div  class="input-group-addon" id="enter" style="cursor:pointer;">发送</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="select" class="col-xs-2">
-			<form class="form">
-					<div  id="select_div" class="controls"  data-toggle="popover" data-content='选择发送对象' data-trigger='hover'  >
-						<select id="selelct_users" class="form-control">
-							<option>加载中...</option>
-						</select>
-					</div>
-			</form>
-		</div>
-		<div id="face" class="col-xs-2">
-			<form class="form">
-					<div  id="face_div" class="controls" data-toggle='popover' data-trigger='hover' data-content='选择表情'>
-						<select id="select_face" class="form-control" >
-							<option>添加表情</option>
-							<option>happy2</option>
-							<option>bubble</option>
-							<option>star</option>
-							<option>heart</option>
-							<option>heart2</option>
-							<option>heart-broken</option>
-							<option>thumbs-up</option>
-							<option>thumbs-up2</option>
-							<option>happy</option>
-							<option>smiley</option>
-							<option>smiley2</option>
-							<option>tongue</option>
-							<option>tongue2</option>
-							<option>sad</option>
-							<option>sad2</option>
-							<option>wink</option>
-							<option>wink2</option>
-							<option>grin</option>
-							<option>grin2</option>
-							<option>cool</option>
-							<option>angry</option>
-							<option>evil</option>
-							<option>shocked</option>
-							<option>confused</option>
-							<option>neutral</option>
-							<option>wondering2</option>
-						</select>
-					</div>
-			</form>
-		</div>
-	</div>
+<div id="input" class="container">
+    <div class="row">
+        <div id="username" class="col-xs-3">
+            <div class="form-group">
+                <label class="col-xs-6 control-label" style="padding-top:7px;">用户名:</label>
+                <div class="col-xs-6">
+                    <p id="your_name" class="form-control-static">fudongdong</p>
+                </div>
+            </div>
+        </div>
+        <div id="input_box" class="col-xs-5">
+            <div class="form-inline width100">
+                <div class="form-group width100">
+                    <div class="input-group width100">
+                        <div class="input-group-addon">
+                            <input id="color" type="color" name="color"/>
+                        </div>
+                        <input id="input_emit_box" class="form-control" type='text' placeholder="input here..."/>
+                        <div class="input-group-addon" id="enter" style="cursor:pointer;">发送</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="select" class="col-xs-2">
+            <form class="form">
+                <div id="select_div" class="controls" data-toggle="popover" data-content='选择发送对象' data-trigger='hover'>
+                    <select id="selelct_users" class="form-control">
+                        <option>加载中...</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div id="face" class="col-xs-2">
+            <form class="form">
+                <div id="face_div" class="controls" data-toggle='popover' data-trigger='hover' data-content='选择表情'>
+                    <select id="select_face" class="form-control">
+                        <option>添加表情</option>
+                        <option>happy2</option>
+                        <option>bubble</option>
+                        <option>star</option>
+                        <option>heart</option>
+                        <option>heart2</option>
+                        <option>heart-broken</option>
+                        <option>thumbs-up</option>
+                        <option>thumbs-up2</option>
+                        <option>happy</option>
+                        <option>smiley</option>
+                        <option>smiley2</option>
+                        <option>tongue</option>
+                        <option>tongue2</option>
+                        <option>sad</option>
+                        <option>sad2</option>
+                        <option>wink</option>
+                        <option>wink2</option>
+                        <option>grin</option>
+                        <option>grin2</option>
+                        <option>cool</option>
+                        <option>angry</option>
+                        <option>evil</option>
+                        <option>shocked</option>
+                        <option>confused</option>
+                        <option>neutral</option>
+                        <option>wondering2</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <div id="right">
-	<ul class="clear_after">
-		<li>
-			<a id="history" href="/history?page=1" target="_blank" type="button" class="btn btn-default">历史</a>
-		</li>
-		<li>
-			<a id="about" type="button" class="btn btn-default" data-toggle="modal" data-target="#aboutModal">关于</a>
-		</li>
-		<li>
-			<a href="/comments" target="_blank" type="button" class="btn btn-default">留言</a>
-		</li>
-		<li>
-			<a href="/player" target="_blank" type="button" class="btn btn-default">音乐</a>
-		</li>
-		<li>
-			<a href="https://github.com/yihuaxiang/nodejs_chat" target="_blank" type="button" class="btn btn-danger">🔥github</a>
-		</li>
-	</ul>
+    <ul class="clear_after">
+        <li>
+            <a id="history" href="/history?page=1" target="_blank" type="button" class="btn btn-default">历史</a>
+        </li>
+        <li>
+            <a id="about" type="button" class="btn btn-default" data-toggle="modal" data-target="#aboutModal">关于</a>
+        </li>
+        <li>
+            <a href="/comments" target="_blank" type="button" class="btn btn-default">留言</a>
+        </li>
+        <li>
+            <a href="/player" target="_blank" type="button" class="btn btn-default">音乐</a>
+        </li>
+        <li>
+            <a href="https://github.com/yihuaxiang/nodejs_chat" target="_blank" type="button" class="btn btn-danger">🔥github</a>
+        </li>
+    </ul>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
-        <h4 class="modal-title" id="myModalLabel">关于该网站</h4>
-      </div>
-      <div class="modal-body">
-        <p>该聊天室有电子科大符栋栋创建，不足之处望多多见谅，如觉得不错，可去这里下载 <a href="https://github.com/yihuaxiang/nodejs_chat" target="_blank">https://github.com/yihuaxiang/nodejs_chat</a></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                            class="sr-only">关闭</span></button>
+                <h4 class="modal-title" id="myModalLabel">关于该网站</h4>
+            </div>
+            <div class="modal-body">
+                <p>该聊天室有电子科大符栋栋创建，不足之处望多多见谅，如觉得不错，可去这里下载 <a href="https://github.com/yihuaxiang/nodejs_chat"
+                                                            target="_blank">https://github.com/yihuaxiang/nodejs_chat</a>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!--display none-->
