@@ -9,21 +9,14 @@ connection = connect_mysql.connect(connection);
 
 
 exports.index = function (req, res) {
-  res.render('index', {title: "我们的聊天室"});
+  res.render('index', {title: "敖武的聊天室"});
 };
 
 exports.history = function (req, res) {
   if (req.query.f) {
     var f = req.query.f.replace('"', "&quot;");
     var page = req.query.page;
-    page = Number(page);
-    if (page <= 0) {
-      page = 1;
-    }
-    if (!page) {
-      page = 1;
-    }
-    //console.log(page);
+    page = Math.max(Number(page) || 1, 1);
     if (f != "") {
       var sql = 'select * from history where f like "%' + f + '%" limit ' + ((page - 1) * 100) + ",100";
     } else {
@@ -37,13 +30,7 @@ exports.history = function (req, res) {
   } else if (req.query.t) {
     var t = req.query.t.replace('"', "&quot;");
     var page = req.query.page;
-    page = Number(page);
-    if (page <= 0) {
-      page = 1;
-    }
-    if (!page) {
-      page = 1;
-    }
+    page = Math.max(Number(page) || 1, 1);
     //console.log(page);
     if (t != "") {
       var sql = 'select * from history where t like "%' + t + '%" limit ' + ((page - 1) * 100) + ',100';
@@ -57,13 +44,7 @@ exports.history = function (req, res) {
   } else if (req.query.message) {
     var message = req.query.message.replace('"', "&quot;");
     var page = req.query.page;
-    page = Number(page);
-    if (page <= 0) {
-      page = 1;
-    }
-    if (!page) {
-      page = 1;
-    }
+    page = Math.max(Number(page) || 1, 1);
     //console.log(page);
     if (message != "") {
       var sql = 'select * from history where message like "%' + message + '%" limit ' + ((page - 1) * 100) + ',100';
@@ -77,13 +58,7 @@ exports.history = function (req, res) {
   } else if (req.query.d) {
     var d = req.query.d.replace('"', "&quot;");
     var page = req.query.page;
-    page = Number(page);
-    if (page <= 0) {
-      page = 1;
-    }
-    if (!page) {
-      page = 1;
-    }
+    page = Math.max(Number(page) || 1, 1);
     //console.log(page);
     if (d != "") {
       var sql = 'select * from history where d like "%' + d + '%" limit ' + ((page - 1) * 100) + ',100';
@@ -96,13 +71,7 @@ exports.history = function (req, res) {
     var sql1 = "select * from history";
   } else {
     var page = req.query.page;
-    page = Number(page);
-    if (page <= 0) {
-      page = 1;
-    }
-    if (!page) {
-      page = 1;
-    }
+    page = Math.max(Number(page) || 1, 1);
     var sql = "select * from history limit " + ((page - 1) * 100) + ",100";
     console.log(sql);
 
