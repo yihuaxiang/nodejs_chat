@@ -79,7 +79,7 @@ exports.history = function (req, res) {
   }
 
   var pages = new Array();
-  connection.query(sql1 + ' order by id desc', function (err, rows, fields) {
+  connection.query(sql1, function (err, rows, fields) {
     if (err) throw err;
 
     for (var i = 0; i <= (rows.length / 100); i++) {
@@ -87,7 +87,7 @@ exports.history = function (req, res) {
     }
   })
 
-  connection.query(sql + ' order by id desc', function (err, rows, fields) {
+  connection.query(sql, function (err, rows, fields) {
     if (err) throw err;
 
     res.render("history", {
