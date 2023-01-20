@@ -72,7 +72,7 @@ exports.history = function (req, res) {
   } else {
     var page = req.query.page;
     page = Math.max(Number(page) || 1, 1);
-    var sql = "select * from history  order by id desc limit " + ((page - 1) * 100) + ",100";
+    var sql = "select * from history order by id desc limit " + ((page - 1) * 100) + ",100";
     console.log(sql);
 
     var sql1 = "select * from history order by id desc";
