@@ -18,14 +18,14 @@ exports.history = function (req, res) {
     var page = req.query.page;
     page = Math.max(Number(page) || 1, 1);
     if (f != "") {
-      var sql = 'select * from history where f like "%' + f + '%" limit ' + ((page - 1) * 100) + ",100";
+      var sql = 'select * from history order by id desc where f like "%' + f + '%" limit ' + ((page - 1) * 100) + ",100";
     } else {
-      var sql = "select * from history limit " + ((page - 1) * 100) + ",100";
+      var sql = "select * from history order by id desc limit " + ((page - 1) * 100) + ",100";
     }
 
     console.log(sql);
 
-    var sql1 = "select * from history";
+    var sql1 = "select * from history order by id desc";
 
   } else if (req.query.t) {
     var t = req.query.t.replace('"', "&quot;");
@@ -33,49 +33,49 @@ exports.history = function (req, res) {
     page = Math.max(Number(page) || 1, 1);
     //console.log(page);
     if (t != "") {
-      var sql = 'select * from history where t like "%' + t + '%" limit ' + ((page - 1) * 100) + ',100';
+      var sql = 'select * from history  order by id desc where t like "%' + t + '%" limit ' + ((page - 1) * 100) + ',100';
     } else {
-      var sql = "select * from history limit " + ((page - 1) * 100) + ",100";
+      var sql = "select * from history order by id desc limit " + ((page - 1) * 100) + ",100";
     }
 
     console.log(sql);
 
-    var sql1 = "select * from history";
+    var sql1 = "select * from history order by id desc ";
   } else if (req.query.message) {
     var message = req.query.message.replace('"', "&quot;");
     var page = req.query.page;
     page = Math.max(Number(page) || 1, 1);
     //console.log(page);
     if (message != "") {
-      var sql = 'select * from history where message like "%' + message + '%" limit ' + ((page - 1) * 100) + ',100';
+      var sql = 'select * from history order by id desc where message like "%' + message + '%" limit ' + ((page - 1) * 100) + ',100';
     } else {
-      var sql = "select * from history limit " + ((page - 1) * 100) + ",100";
+      var sql = "select * from history order by id desc limit " + ((page - 1) * 100) + ",100";
     }
 
     console.log(sql);
 
-    var sql1 = "select * from history";
+    var sql1 = "select * from history order by id desc";
   } else if (req.query.d) {
     var d = req.query.d.replace('"', "&quot;");
     var page = req.query.page;
     page = Math.max(Number(page) || 1, 1);
     //console.log(page);
     if (d != "") {
-      var sql = 'select * from history where d like "%' + d + '%" limit ' + ((page - 1) * 100) + ',100';
+      var sql = 'select * from history order by id desc where d like "%' + d + '%" limit ' + ((page - 1) * 100) + ',100';
     } else {
-      var sql = "select * from history limit " + ((page - 1) * 100) + ",100";
+      var sql = "select * from history order by id desc limit " + ((page - 1) * 100) + ",100";
     }
 
     console.log(sql);
 
-    var sql1 = "select * from history";
+    var sql1 = "select * from history order by id desc";
   } else {
     var page = req.query.page;
     page = Math.max(Number(page) || 1, 1);
-    var sql = "select * from history limit " + ((page - 1) * 100) + ",100";
+    var sql = "select * from history  order by id desc limit " + ((page - 1) * 100) + ",100";
     console.log(sql);
 
-    var sql1 = "select * from history";
+    var sql1 = "select * from history order by id desc";
   }
 
   var pages = new Array();
