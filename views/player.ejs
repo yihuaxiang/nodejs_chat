@@ -73,10 +73,10 @@
     </div>
     <div id="songsList">
         <ul>
-            <% songs.forEach(function(song){ %>
+            <% songs.forEach(function(song, index){ %>
                 <li>
                     <sapn style="display:inline-block;width:240px;overflow:hidden;position:relative;top:4px;"><%= song.song %></sapn>
-                    <span id="song<%= song.name %>" class="icon-volume-high"></span></li>
+                    <span id="song<%= index %>" class="icon-volume-high"></span></li>
             <% }) %>
         </ul>
     </div>
