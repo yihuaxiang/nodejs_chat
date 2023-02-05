@@ -13,7 +13,7 @@
       <% songs.forEach(function(song){ %>
       var one = new Object();
       one.song = "<%= song.song %>";
-      one.src = "<%= song.name %>.mp3";
+      one.src = "<%= song.name %>";
       one.by = "<%= song.by_ %>";
       one.album = "<%= song.album %>";
       songs.push(one);
