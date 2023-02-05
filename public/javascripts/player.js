@@ -115,7 +115,7 @@ $(function(){
 				//cu=Number(songs.length)-1;
 			//}
 			for(var i=0;i<songs.length;i++){
-				if(songs[i]["src"]==(song+".mp3")){
+				if(i == song){
 					cu=i;
 				}
 			}
