@@ -50,7 +50,7 @@ $(function(){
 		$("#play-pause").removeClass("icon-pause").addClass("icon-play");
 		$("#process_forward").css("width","10px");
 		$("#nowTime").text("00:00");
-		audio.src="/songs/"+songs[cu].src;
+		audio.src=songs[cu].src;
 			$("#song").text(songs[cu].song);
 			$("#by").text(songs[cu].by);
 			$("#album").text(songs[cu].album);
@@ -63,7 +63,7 @@ $(function(){
 				cu=0;
 			}
 			//alert(cu);
-			audio.src="/songs/"+songs[cu].src;
+			audio.src=songs[cu].src;
 			$("#download").attr("href","/download/"+parseInt(songs[cu].src));
 			$("#song").text(songs[cu].song);
 			$("#by").text(songs[cu].by);
@@ -84,7 +84,7 @@ $(function(){
 				cu=Number(songs.length)-1;
 			}
 			//alert(cu);
-			audio.src="/songs/"+songs[cu].src;
+			audio.src=songs[cu].src;
 			$("#download").attr("href","/download/"+parseInt(songs[cu].src));
 			$("#song").text(songs[cu].song);
 			$("#by").text(songs[cu].by);
@@ -126,7 +126,7 @@ $(function(){
 			//cu=Number(song)-1;
 			//alert(cu);
 			//alert(songs[cu].src);
-			audio.src="/songs/"+songs[cu].src;
+			audio.src=songs[cu].src;
 			$("#download").attr("href","/download/"+parseInt(songs[cu].src));
 			$("#song").text(songs[cu].song);
 			$("#by").text(songs[cu].by);
@@ -166,7 +166,7 @@ $(function(){
 			if($("#shuffle").hasClass("active")){
 				var cu=Math.floor(Math.random()*songs.length);
 				//alert(cu);
-				audio.src="/songs/"+songs[cu].src;
+				audio.src=songs[cu].src;
 			$("#download").attr("href","/download/"+parseInt(songs[cu].src));
 			$("#song").text(songs[cu].song);
 			$("#by").text(songs[cu].by);
