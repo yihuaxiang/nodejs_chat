@@ -64,7 +64,7 @@ $(function(){
 			}
 			//alert(cu);
 			audio.src=songs[cu].src;
-			$("#download").attr("href","/download/"+parseInt(songs[cu].src));
+			$("#download").attr("href",songs[cu].src);
 			$("#song").text(songs[cu].song);
 			$("#by").text(songs[cu].by);
 			$("#album").text(songs[cu].album);
@@ -85,7 +85,7 @@ $(function(){
 			}
 			//alert(cu);
 			audio.src=songs[cu].src;
-			$("#download").attr("href","/download/"+parseInt(songs[cu].src));
+			$("#download").attr("href",songs[cu].src);
 			$("#song").text(songs[cu].song);
 			$("#by").text(songs[cu].by);
 			$("#album").text(songs[cu].album);
@@ -127,7 +127,7 @@ $(function(){
 			//alert(cu);
 			//alert(songs[cu].src);
 			audio.src=songs[cu].src;
-			$("#download").attr("href","/download/"+parseInt(songs[cu].src));
+			$("#download").attr("href",songs[cu].src);
 			$("#song").text(songs[cu].song);
 			$("#by").text(songs[cu].by);
 			$("#album").text(songs[cu].album);
@@ -167,7 +167,7 @@ $(function(){
 				var cu=Math.floor(Math.random()*songs.length);
 				//alert(cu);
 				audio.src=songs[cu].src;
-			$("#download").attr("href","/download/"+parseInt(songs[cu].src));
+			$("#download").attr("href",songs[cu].src);
 			$("#song").text(songs[cu].song);
 			$("#by").text(songs[cu].by);
 			$("#album").text(songs[cu].album);
